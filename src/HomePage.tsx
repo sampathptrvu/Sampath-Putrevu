@@ -70,7 +70,7 @@ export default function HomePage() {
     <div className="min-h-screen selection:bg-burgundy selection:text-warm-white font-sans text-warm-white">
       <Header />
       
-      <main className="pb-12">
+      <main className="homepage-content-stack pb-12">
         {/* Fixed Background Image Layers */}
         
         {/* Layer 1: Sharp (Original) */}
@@ -85,20 +85,20 @@ export default function HomePage() {
         </div>
         
         {/* Hero Section */}
-        <section className="hero-section">
+        <section className="hero-panel-stage">
           <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="hero-copy-panel z-10"
             >
-                <span className="eyebrow font-bold font-sans text-[rgba(255,250,242,0.92)] text-center block">
+                <span className="eyebrow block">
                   Narratives for technical founders
                 </span>
-                <h1 className="font-display font-normal not-italic text-balance text-warm-white text-center">
+                <h1 className="text-balance">
                   Great products are often lost in translation
                 </h1>
-                <p className="hero-description font-sans font-normal text-text-on-dark text-center">
+                <p className="hero-description">
                   I find the idea only your company can own, and give it language the market can repeat.
                 </p>
                 
@@ -107,13 +107,13 @@ export default function HomePage() {
                     href="https://cal.com/sampath-putrevu-z6jq0i"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full md:w-auto text-center inline-flex items-center justify-center px-6 md:px-[28px] py-[14px] bg-burgundy text-warm-white rounded-[4px] text-[15px] font-bold hover:bg-burgundy-dark transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent cursor-pointer shadow-sm"
+                    className="w-full md:w-auto text-center inline-flex items-center justify-center px-5 md:px-[22px] py-[11px] bg-burgundy text-warm-white rounded-[4px] text-[13px] font-bold hover:bg-burgundy-dark transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent cursor-pointer shadow-sm"
                   >
                     Book a call
                   </a>
                   <Link 
                     to="/work"
-                    className="w-full md:w-auto text-center inline-flex items-center justify-center px-6 md:px-[28px] py-[14px] bg-white/10 backdrop-blur-sm border border-white/20 text-warm-white rounded-[4px] text-[15px] font-bold hover:bg-white/15 transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent cursor-pointer shadow-sm"
+                    className="w-full md:w-auto text-center inline-flex items-center justify-center px-5 md:px-[22px] py-[11px] bg-white/10 backdrop-blur-sm border border-white/20 text-warm-white rounded-[4px] text-[13px] font-bold hover:bg-white/15 transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent cursor-pointer shadow-sm"
                   >
                     Past work
                   </Link>
@@ -123,8 +123,8 @@ export default function HomePage() {
 
         
         {/* Credibility Section */}
-        <section className="credibility-section">
-          <div className="credibility-inner">
+        <section className="credibility-row">
+          <div className="credibility-strip credibility-inner">
             <p className="credibility-label font-bold tracking-[0.03em] uppercase text-[12px] md:text-[13px] opacity-80">Trusted by founders and teams backed by:</p>
             <div className="credibility-logos">
               <img src={sequoiaLogo} alt="Sequoia" className="h-[20px] md:h-[22px] w-auto object-contain shrink-0 brightness-0 opacity-[0.85]" />
@@ -136,11 +136,11 @@ export default function HomePage() {
 
         {/* Problem Section */}
         <section id="problem" className="home-section scroll-mt-[100px]">
-          <div className="section-inner">
+          <div className="section-row">
           <div className="section-label-container">
-            <div className="section-label-glass glass-surface">
-              <h2 className="section-label problem-label text-xl md:text-2xl font-semibold tracking-tight text-warm-white">The problem</h2>
-              <div className="w-12 h-px bg-burgundy mt-4 md:mt-5"></div>
+            <div className="section-label-panel">
+              <h2 className="section-label">The problem</h2>
+              <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
             </div>
           </div>
           
@@ -168,11 +168,11 @@ export default function HomePage() {
 
         {/* How I Help */}
         <section id="expertise" className="home-section scroll-mt-[100px]">
-          <div className="section-inner">
+          <div className="section-row">
           <div className="section-label-container">
-            <div className="section-label-glass glass-surface">
-              <h2 className="section-label text-xl md:text-2xl font-semibold tracking-tight text-warm-white">How I help</h2>
-              <div className="w-12 h-px bg-burgundy mt-4 md:mt-5"></div>
+            <div className="section-label-panel">
+              <h2 className="section-label">How I help</h2>
+              <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
             </div>
           </div>
           
@@ -237,11 +237,11 @@ export default function HomePage() {
 
         {/* Why me */}
         <section id="why-me" className="home-section scroll-mt-[100px]">
-          <div className="section-inner">
+          <div className="section-row">
           <div className="section-label-container">
-            <div className="section-label-glass glass-surface">
-              <h2 className="section-label text-xl md:text-2xl font-semibold tracking-tight text-warm-white">Why me</h2>
-              <div className="w-12 h-px bg-burgundy mt-4 md:mt-5"></div>
+            <div className="section-label-panel">
+              <h2 className="section-label">Why me</h2>
+              <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
             </div>
           </div>
           
@@ -275,11 +275,11 @@ export default function HomePage() {
 
         {/* What I believe */}
         <section id="beliefs" className="home-section scroll-mt-[100px]">
-          <div className="section-inner">
+          <div className="section-row">
           <div className="section-label-container">
-            <div className="section-label-glass glass-surface">
-              <h2 className="section-label text-xl md:text-2xl font-semibold tracking-tight text-warm-white">What I believe</h2>
-              <div className="w-12 h-px bg-burgundy mt-4 md:mt-5"></div>
+            <div className="section-label-panel">
+              <h2 className="section-label">What I believe</h2>
+              <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
             </div>
           </div>
           
@@ -312,11 +312,11 @@ export default function HomePage() {
 
         {/* Best Fit */}
         <section id="fit" className="home-section scroll-mt-[100px]">
-          <div className="section-inner">
+          <div className="section-row">
           <div className="section-label-container">
-            <div className="section-label-glass glass-surface">
-              <h2 className="section-label text-xl md:text-2xl font-semibold tracking-tight text-warm-white">Best fit</h2>
-              <div className="w-12 h-px bg-burgundy mt-4 md:mt-5"></div>
+            <div className="section-label-panel">
+              <h2 className="section-label">Best fit</h2>
+              <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
             </div>
           </div>
           
@@ -345,12 +345,10 @@ export default function HomePage() {
         </section>
 
         
-      </main>
-
-      {/* Final CTA */}
+            {/* Final CTA */}
       <section className="footer-cta">
         <div className="footer-cta-inner">
-          <h2 className="font-display font-normal text-warm-white tracking-[-0.015em]">The story is the strategy.</h2>
+          <h2 className="tracking-[-0.015em]">The story is the strategy.</h2>
           <p className="font-sans font-medium text-text-on-dark">If your product is ahead of its language, that's where we start.</p>
           <div className="flex justify-center items-center">
             <a 
@@ -396,8 +394,8 @@ export default function HomePage() {
             </a>
           </div>
         </div>
-      </section>
-
+        </section>
+      </main>
     </div>
   );
 }

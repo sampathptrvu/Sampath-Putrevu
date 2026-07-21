@@ -86,7 +86,7 @@ export default function Header() {
           <button 
             ref={hamburgerRef}
             onClick={() => setIsMobileMenuOpen(true)}
-            className="mobile-nav-toggle flex flex-col justify-center gap-[6px] shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-transparent rounded-[4px]"
+            className="menu-toggle flex flex-col justify-center gap-[6px] shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-transparent rounded-[4px]"
             aria-expanded={isMobileMenuOpen}
             aria-controls="mobile-menu"
             aria-label="Open menu"

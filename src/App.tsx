@@ -1,17 +1,19 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage';
 import WorkPage from './WorkPage';
-import EssaysPage from './EssaysPage';
-import EssayPage from './EssayPage';
+import ThesesPage from './ThesesPage';
+import NotFoundPage from './NotFoundPage';
+import homepageBackground from './homepage-background.png';
 
 export default function App() {
   return (
     <Router>
+      <div className="site-background-image" style={{ backgroundImage: `url(${homepageBackground})` }} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/work" element={<WorkPage />} />
-        <Route path="/essays" element={<EssaysPage />} />
-        <Route path="/essays/:slug" element={<EssayPage />} />
+        <Route path="/theses" element={<ThesesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>
   );

@@ -1,13 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Mail } from 'lucide-react';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
+import { X, Mail } from 'lucide-react';
+import { cn } from './lib/utils';
 import linkedinIcon from './linkedin-icon.png';
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import whatsappIcon from './whatsapp-icon.png';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -15,24 +11,46 @@ export default function Header() {
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
   const isWorkPage = location.pathname === '/work';
+  const isThesesPage = location.pathname === '/theses';
+  const [activeSection, setActiveSection] = useState('');
+
+  useEffect(() => {
+    const handleScrollSpy = () => {
+      if (location.pathname !== '/') {
+        setActiveSection('');
+        return;
+      }
+      const sections = ['expertise', 'why-me', 'fit'];
+      let current = '';
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= window.innerHeight * 0.5) {
+            current = section;
+          }
+        }
+      }
+      setActiveSection(current);
+    };
+    window.addEventListener('scroll', handleScrollSpy, { passive: true });
+    handleScrollSpy();
+    return () => window.removeEventListener('scroll', handleScrollSpy);
+  }, [location.pathname]);
 
   // Handle scroll for smoked-glass background
   useEffect(() => {
     const handleScroll = () => {
-      // Typically hero is 100vh, we can just trigger after say 100px or innerHeight - something. 
-      // Actually "Once the user scrolls beyond the hero"
-      // we'll trigger at window.innerHeight
+      if (location.pathname !== '/') {
+        setScrolled(true);
+        return;
+      }
       if (window.scrollY > window.innerHeight * 0.5) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
     };
-    
-    // For work page, it's always blurred, so let's check if we want it always dark there
-    // Actually the prompt says "Keep the desktop navigation transparent over the sharp hero. Once the user scrolls beyond the hero, give the fixed navigation its existing dark smoked-glass background..."
-    
-    // But it's simple enough to just use a fixed scroll threshold. 
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
@@ -49,54 +67,149 @@ export default function Header() {
       document.body.style.overflow = '';
     };
   }, [isMobileMenuOpen]);
-  
+
   const prevOpenRef = useRef(isMobileMenuOpen);
   useEffect(() => {
     if (prevOpenRef.current && !isMobileMenuOpen) {
       hamburgerRef.current?.focus();
+    } else if (!prevOpenRef.current && isMobileMenuOpen) {
+      // Move focus into the menu when opened
+      const focusTimer = setTimeout(() => {
+        const menu = document.getElementById('mobile-menu');
+        if (menu) {
+          const firstElement = menu.querySelector('a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])') as HTMLElement;
+          if (firstElement) firstElement.focus();
+        }
+      }, 50);
+      return () => clearTimeout(focusTimer);
     }
     prevOpenRef.current = isMobileMenuOpen;
   }, [isMobileMenuOpen]);
 
-  // Handle escape key
+  // Handle escape key and focus trap
   useEffect(() => {
-    const handleEsc = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsMobileMenuOpen(false);
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+        return;
+      }
+      if (e.key === 'Tab') {
+        const menu = document.getElementById('mobile-menu');
+        if (!menu) return;
+        const focusableElements = menu.querySelectorAll('a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
+        const firstElement = focusableElements[0] as HTMLElement;
+        const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement) {
+            lastElement.focus();
+            e.preventDefault();
+          }
+        } else {
+          if (document.activeElement === lastElement) {
+            firstElement.focus();
+            e.preventDefault();
+          }
+        }
+      }
     };
-    if (isMobileMenuOpen) window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
+    if (isMobileMenuOpen) window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isMobileMenuOpen]);
 
   return (
     <>
       {/* Header */}
-      <div className="absolute top-0 left-0 w-full z-20 pointer-events-auto site-header">
-        <div className="site-header-inner">
-          {/* Brand */}
+      <div 
+        className={cn(
+          "w-full z-50 pointer-events-auto transition-colors duration-200",
+          scrolled ? "bg-ink/90 backdrop-blur-md shadow-sm border-b border-divider-dark" : "bg-transparent",
+          // Use !fixed to override .site-header's absolute positioning
+          "!fixed top-0 left-0"
+        )}
+      >
+        <div className="site-header-inner relative flex items-center justify-between">
+          
+          {/* Left: Brand */}
           <Link 
             to="/" 
-            className="header-name hover:text-warm-white transition-colors shrink-0"
+            className="header-name hover:text-warm-white transition-colors shrink-0 z-10"
             style={{ color: 'var(--warm-white)', textShadow: '0 2px 10px rgba(0, 0, 0, 0.65)' }}
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Sampath Putrevu
           </Link>
-          
-          {/* Hamburger Menu Toggle */}
-          <button 
-            ref={hamburgerRef}
-            onClick={() => setIsMobileMenuOpen(true)}
-            className="menu-toggle flex flex-col justify-center gap-[6px] shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-transparent rounded-[4px]"
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu"
-            aria-label="Open menu"
-            style={{ width: '48px', height: '48px', alignItems: 'flex-end', justifyContent: 'center' }}
+
+          {/* Center: Secondary Nav (Desktop & Tablet) */}
+          <nav 
+            className={cn(
+              "desktop-nav items-center gap-6 absolute left-1/2 -translate-x-1/2 transition-all duration-300",
+              scrolled ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"
+            )}
           >
-            <span className="rounded-full h-[3px] w-[28px] sm:w-[32px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
-            <span className="rounded-full h-[3px] w-[28px] sm:w-[32px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
-            <span className="rounded-full h-[3px] w-[28px] sm:w-[32px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
-          </button>
+            <a href="/#expertise" className={cn("type-nav transition-colors", activeSection === "expertise" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>How I help</a>
+            <a href="/#why-me" className={cn("type-nav transition-colors", activeSection === "why-me" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Why me</a>
+            <a href="/#fit" className={cn("type-nav transition-colors", activeSection === "fit" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Best fit</a>
+            <Link to="/work" className={cn("type-nav transition-colors", isWorkPage ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Past work</Link>
+            <Link to="/theses" className={cn("type-nav transition-colors", isThesesPage ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Theses</Link>
+          </nav>
+
+          {/* Right: Social, Email, CTA & Hamburger */}
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-[16px] min-[1100px]:gap-6 z-10 shrink-0">
+            {/* Desktop / Tablet Links */}
+            <div className="hidden md:flex items-center gap-[12px] min-[1100px]:gap-3">
+              <a href="https://www.linkedin.com/in/sampathputrevu/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="LinkedIn">
+                <div className="w-[23.24px] h-[23.24px] bg-current shrink-0" style={{ maskImage: `url(${linkedinIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${linkedinIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
+              </a>
+              <a href="mailto:sampathptrvu@gmail.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="Email">
+                <Mail className="w-[23.24px] h-[23.24px] shrink-0" />
+              </a>
+              <a href="https://wa.me/919901774002" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="WhatsApp">
+                <div className="w-[23.24px] h-[23.24px] bg-current shrink-0" style={{ maskImage: `url(${whatsappIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${whatsappIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
+              </a>
+            </div>
+
+            {/* Permanent CTA (Desktop, Tablet, Mobile) */}
+            <a 
+              href="https://cal.com/sampath-putrevu-z6jq0i"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center h-[36px] px-3 sm:h-[40px] sm:px-5 rounded-[4px] type-button transition-all shadow-sm bg-burgundy text-warm-white hover:bg-burgundy-dark hover:-translate-y-[1px] focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink cursor-pointer"
+            >
+              Book a call
+            </a>
+
+            {/* Hamburger Menu Toggle (Mobile only, or Tablet if needed) */}
+            {/* But prompt says: "Keep LinkedIn, Email, and all five navigation links inside the hamburger menu" on mobile. */}
+            <button 
+              ref={hamburgerRef}
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="min-[1100px]:hidden menu-toggle flex flex-col justify-center gap-[6px] shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-transparent rounded-[4px]"
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
+              aria-label="Open menu"
+              style={{ width: '40px', height: '40px', alignItems: 'flex-end', justifyContent: 'center' }}
+            >
+              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
+              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
+              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
+            </button>
+          </div>
         </div>
+          {/* Tablet Second Row (scrolled only) */}
+          <div 
+            className={cn(
+              "tablet-nav justify-center items-center pt-3 pb-1",
+              scrolled ? "scrolled" : ""
+            )}
+          >
+            <nav className="flex items-center gap-5 lg:gap-8">
+              <a href="/#expertise" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", activeSection === "expertise" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>How I help</a>
+              <a href="/#why-me" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", activeSection === "why-me" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Why me</a>
+              <a href="/#fit" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", activeSection === "fit" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Best fit</a>
+              <Link to="/work" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", isWorkPage ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Past work</Link>
+              <Link to="/theses" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", isThesesPage ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Theses</Link>
+            </nav>
+          </div>
       </div>
 
       {/* Menu Overlay Scrim */}
@@ -136,9 +249,9 @@ export default function Header() {
           </div>
 
           <div className="flex-1 px-[var(--page-gutter)] py-8 flex flex-col">
-            <div className="flex flex-col gap-6 sm:gap-8 text-[22px] sm:text-[26px] font-medium text-warm-white">
-              <a href="/#expertise" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-warm-white transition-colors">How I Help</a>
-              <a href="/#why-me" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-warm-white transition-colors">Why Me</a>
+            <div className="flex flex-col gap-6 sm:gap-8 type-section-heading-burgundy text-warm-white text-warm-white">
+              <a href="/#expertise" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-warm-white transition-colors">How I help</a>
+              <a href="/#why-me" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-warm-white transition-colors">Why me</a>
               <a href="/#fit" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-warm-white transition-colors">Best fit</a>
               <Link 
                 to="/work" 
@@ -151,34 +264,36 @@ export default function Header() {
                 Past work
               </Link>
               <Link 
-                to="/essays" 
+                to="/theses" 
                 onClick={() => setIsMobileMenuOpen(false)} 
                 className={cn(
                   "hover:text-warm-white transition-colors",
-                  location.pathname === '/essays' || location.pathname.startsWith('/essays/') ? "text-burgundy" : ""
+                  isThesesPage ? "text-burgundy" : ""
                 )}
               >
-                Essays
+                Theses
               </Link>
             </div>
             
             <div className="w-full h-px bg-white/10 my-8 sm:my-10"></div>
             
             <div className="flex flex-col gap-6 sm:gap-8">
-              <a href="https://www.linkedin.com/in/sampathputrevu/" target="_blank" rel="noopener noreferrer" className="text-warm-white hover:text-warm-white transition-colors flex items-center gap-4 text-[22px] sm:text-[26px] font-medium" aria-label="LinkedIn">
-                <div className="w-[24px] h-[24px] bg-current shrink-0" style={{ maskImage: `url(${linkedinIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${linkedinIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
-                LinkedIn
-              </a>
-              <a href="mailto:sampathptrvu@gmail.com" target="_blank" rel="noopener noreferrer" className="text-warm-white hover:text-warm-white transition-colors flex items-center gap-4 text-[22px] sm:text-[26px] font-medium" aria-label="Email">
-                <Mail className="w-[24px] h-[24px] shrink-0" />
-                Email
-              </a>
-
+              <div className="flex items-center gap-4">
+                <a href="https://www.linkedin.com/in/sampathputrevu/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-3 -m-3" aria-label="LinkedIn">
+                  <div className="w-[28px] h-[28px] bg-current shrink-0" style={{ maskImage: `url(${linkedinIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${linkedinIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
+                </a>
+                <a href="mailto:sampathptrvu@gmail.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-3 -m-3" aria-label="Email">
+                  <Mail className="w-[28px] h-[28px] shrink-0" />
+                </a>
+                <a href="https://wa.me/919901774002" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-3 -m-3" aria-label="WhatsApp">
+                  <div className="w-[28px] h-[28px] bg-current shrink-0" style={{ maskImage: `url(${whatsappIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${whatsappIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
+                </a>
+              </div>
               <a 
                 href="https://cal.com/sampath-putrevu-z6jq0i"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-4 rounded-[4px] text-[16px] sm:text-[18px] font-bold transition-all shadow-sm bg-burgundy text-warm-white hover:bg-burgundy-dark hover:-translate-y-[1px] focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink cursor-pointer mt-2 sm:mt-4 w-full"
+                className="inline-flex items-center justify-center px-6 py-4 rounded-[4px] type-button transition-all shadow-sm bg-burgundy text-warm-white hover:bg-burgundy-dark hover:-translate-y-[1px] focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink cursor-pointer mt-2 sm:mt-4 w-full"
               >
                 Book a call
               </a>

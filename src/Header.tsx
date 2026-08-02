@@ -11,7 +11,6 @@ export default function Header() {
   const hamburgerRef = useRef<HTMLButtonElement>(null);
   const location = useLocation();
   const isWorkPage = location.pathname === '/work';
-  const isThesesPage = location.pathname === '/theses';
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
@@ -150,7 +149,6 @@ export default function Header() {
             <a href="/#why-me" className={cn("type-nav transition-colors", activeSection === "why-me" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Why me</a>
             <a href="/#fit" className={cn("type-nav transition-colors", activeSection === "fit" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Best fit</a>
             <Link to="/work" className={cn("type-nav transition-colors", isWorkPage ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Past work</Link>
-            <Link to="/theses" className={cn("type-nav transition-colors", isThesesPage ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Theses</Link>
           </nav>
 
           {/* Right: Social, Email, CTA & Hamburger */}
@@ -163,7 +161,7 @@ export default function Header() {
               <a href="mailto:sampathptrvu@gmail.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="Email">
                 <Mail className="w-[23.24px] h-[23.24px] shrink-0" />
               </a>
-              <a href="https://wa.me/919901774002" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="WhatsApp">
+              <a href="https://wa.me/919989546250" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="WhatsApp">
                 <div className="w-[23.24px] h-[23.24px] bg-current shrink-0" style={{ maskImage: `url(${whatsappIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${whatsappIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
               </a>
             </div>
@@ -207,7 +205,6 @@ export default function Header() {
               <a href="/#why-me" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", activeSection === "why-me" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Why me</a>
               <a href="/#fit" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", activeSection === "fit" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Best fit</a>
               <Link to="/work" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", isWorkPage ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Past work</Link>
-              <Link to="/theses" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", isThesesPage ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Theses</Link>
             </nav>
           </div>
       </div>
@@ -263,16 +260,6 @@ export default function Header() {
               >
                 Past work
               </Link>
-              <Link 
-                to="/theses" 
-                onClick={() => setIsMobileMenuOpen(false)} 
-                className={cn(
-                  "hover:text-warm-white transition-colors",
-                  isThesesPage ? "text-burgundy" : ""
-                )}
-              >
-                Theses
-              </Link>
             </div>
             
             <div className="w-full h-px bg-white/10 my-8 sm:my-10"></div>
@@ -285,7 +272,7 @@ export default function Header() {
                 <a href="mailto:sampathptrvu@gmail.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-3 -m-3" aria-label="Email">
                   <Mail className="w-[28px] h-[28px] shrink-0" />
                 </a>
-                <a href="https://wa.me/919901774002" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-3 -m-3" aria-label="WhatsApp">
+                <a href="https://wa.me/919989546250" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-3 -m-3" aria-label="WhatsApp">
                   <div className="w-[28px] h-[28px] bg-current shrink-0" style={{ maskImage: `url(${whatsappIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${whatsappIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
                 </a>
               </div>

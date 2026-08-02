@@ -6,6 +6,7 @@ import { useMetadata } from './useMetadata';
 import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
+import ByTheNumbersSection from './ByTheNumbersSection';
 import { motion, useScroll, useTransform } from 'motion/react';
 import { Mail, ScanSearch, Crop, Send } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
@@ -69,11 +70,11 @@ const panelClass = "section-card";
 
 export default function HomePage() {
   useMetadata({
-    title: "Sampath Putrevu | Narratives for technical founders",
-    description: "Fractional VP Marketing for AI-native and technical companies. I find the idea only your company can own, and give it language the market can repeat.",
+    title: "Sampath Putrevu — Narratives for technical founders",
+    description: "Turn product truth into market language. Narrative, positioning and marketing for AI and B2B SaaS founders.",
     canonical: "https://sampathputrevu.com/",
-    ogTitle: "Sampath Putrevu | Narratives for technical founders",
-    ogDescription: "Fractional VP Marketing for AI-native and technical companies. I find the idea only your company can own, and give it language the market can repeat.",
+    ogTitle: "Sampath Putrevu — Narratives for technical founders",
+    ogDescription: "Turn product truth into market language. Narrative, positioning and marketing for AI and B2B SaaS founders.",
     ogUrl: "https://sampathputrevu.com/",
     ogType: "website"
   });
@@ -148,6 +149,11 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section className="home-section scroll-mt-[100px]">
+          <div className="w-full max-w-[var(--page-max-width)] mx-auto px-[var(--page-gutter)]">
+            <ByTheNumbersSection />
+          </div>
+        </section>
 
         {/* How I help */}
         <section id="expertise" className="home-section scroll-mt-[100px]">
@@ -463,7 +469,7 @@ export default function HomePage() {
               <Mail className="w-[28px] h-[28px]" />
             </a>
             <a 
-              href="https://wa.me/919901774002" 
+              href="https://wa.me/919989546250" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="text-white/90 hover:text-white transition-colors flex items-center p-3 -m-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded-sm"

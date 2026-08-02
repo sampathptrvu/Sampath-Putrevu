@@ -41,6 +41,9 @@ export function useMetadata(config: MetadataConfig) {
     }
     canonicalEl.setAttribute('href', config.canonical);
 
-    // Keep existing og:image if present, else you could update it
-  }, [config]);
-}
+    if (config.ogImage) {
+      setMeta('og:image', config.ogImage, 'property');
+      setMeta('og:image:secure_url', config.ogImage, 'property');
+      setMeta('twitter:image', config.ogImage);
+    }
+  }, [config]);}

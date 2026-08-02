@@ -1,7 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage';
 import WorkPage from './WorkPage';
-import ThesesPage from './ThesesPage';
 import NotFoundPage from './NotFoundPage';
 import homepageBackground from './homepage-background.png';
 
@@ -12,7 +11,6 @@ export default function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/work" element={<WorkPage />} />
-        <Route path="/theses" element={<ThesesPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Router>

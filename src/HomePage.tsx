@@ -229,10 +229,10 @@ export default function HomePage() {
                   {/* Block 1 */}
                   <div className="flex flex-col pb-8 md:pb-0 border-b border-divider-light md:border-b-0 md:border-r md:pr-12 group">
                     <h4 className="type-card-heading-2 mb-2 text-balance">Brand and founder positioning</h4>
-                    <p className="type-body mb-4">
+                    <p className="type-body mb-4 !font-normal">
                       The company becomes easier to understand, harder to confuse with competitors, and its founders can explain it the same way whether they're pitching a customer, an investor, or a candidate.
                     </p>
-                    <ul className="type-body space-y-1 list-disc pl-4">
+                    <ul className="type-body space-y-1 list-disc pl-4 !font-normal">
                       <li>Company positioning</li>
                       <li>Core narrative</li>
                       <li>Founder narrative</li>
@@ -247,10 +247,10 @@ export default function HomePage() {
                   {/* Block 2 */}
                   <div className="flex flex-col pb-8 md:pb-0 border-b border-divider-light md:border-b-0 group">
                     <h4 className="type-card-heading-2 mb-2 text-balance">Content and editorial systems</h4>
-                    <p className="type-body mb-4">
+                    <p className="type-body mb-4 !font-normal">
                       The company builds a body of work that keeps earning attention long after a single campaign ends, instead of starting over with every new push.
                     </p>
-                    <ul className="type-body space-y-1 list-disc pl-4">
+                    <ul className="type-body space-y-1 list-disc pl-4 !font-normal">
                       <li>Editorial strategy</li>
                       <li>Long-form articles</li>
                       <li>Newsletters</li>
@@ -265,10 +265,10 @@ export default function HomePage() {
                   {/* Block 3 */}
                   <div className="flex flex-col pb-8 md:pb-0 border-b border-divider-light md:border-b-0 md:border-r md:pr-12 md:border-t md:border-divider-light md:pt-10 group">
                     <h4 className="type-card-heading-2 mb-2 text-balance">LinkedIn and X</h4>
-                    <p className="type-body mb-4">
+                    <p className="type-body mb-4 !font-normal">
                       The founder develops a public voice people recognize and follow, one that becomes shorthand for the company's point of view.
                     </p>
-                    <ul className="type-body space-y-1 list-disc pl-4">
+                    <ul className="type-body space-y-1 list-disc pl-4 !font-normal">
                       <li>Founder voice and pillars</li>
                       <li>Posts and threads</li>
                       <li>Technical and category education</li>
@@ -283,10 +283,10 @@ export default function HomePage() {
                   {/* Block 4 */}
                   <div className="flex flex-col pb-8 md:pb-0 border-b border-divider-light md:border-b-0 md:border-t md:border-divider-light md:pt-10 group">
                     <h4 className="type-card-heading-2 mb-2 text-balance">PR and crisis communications</h4>
-                    <p className="type-body mb-4">
+                    <p className="type-body mb-4 !font-normal">
                       The company earns credibility in outlets the market already trusts, and has language ready that holds up when scrutiny is highest.
                     </p>
-                    <ul className="type-body space-y-1 list-disc pl-4">
+                    <ul className="type-body space-y-1 list-disc pl-4 !font-normal">
                       <li>Media strategy</li>
                       <li>Press releases</li>
                       <li>Journalist outreach</li>
@@ -301,10 +301,10 @@ export default function HomePage() {
                   {/* Block 5 */}
                   <div className="flex flex-col pb-8 md:pb-0 border-b border-divider-light md:border-b-0 md:border-r md:pr-12 md:border-t md:border-divider-light md:pt-10 group">
                     <h4 className="type-card-heading-2 mb-2 text-balance">Fundraises and launches</h4>
-                    <p className="type-body mb-4">
+                    <p className="type-body mb-4 !font-normal">
                       Important company moments land with a story clear enough to outlast the news cycle, so the announcement strengthens how the market understands the business.
                     </p>
-                    <ul className="type-body space-y-1 list-disc pl-4">
+                    <ul className="type-body space-y-1 list-disc pl-4 !font-normal">
                       <li>Announcement positioning</li>
                       <li>Founder messaging</li>
                       <li>Press strategy</li>
@@ -319,10 +319,10 @@ export default function HomePage() {
                   {/* Block 6 */}
                   <div className="flex flex-col md:border-t md:border-divider-light md:pt-10 group">
                     <h4 className="type-card-heading-2 mb-2 text-balance">Webinars and podcasts</h4>
-                    <p className="type-body mb-4">
+                    <p className="type-body mb-4 !font-normal">
                       The company turns its expertise into a recurring format people return to, building authority and a library of material that keeps working long after it airs.
                     </p>
-                    <ul className="type-body space-y-1 list-disc pl-4">
+                    <ul className="type-body space-y-1 list-disc pl-4 !font-normal">
                       <li>Format strategy</li>
                       <li>Guest booking</li>
                       <li>Editorial development</li>
@@ -356,29 +356,45 @@ export default function HomePage() {
           </div>
           
           <FadePanel className={panelClass}>
-            <div className="flex flex-col min-[768px]:grid min-[768px]:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)] gap-[clamp(32px,4vw,52px)] items-start">
-              <div className="flex flex-col gap-5 text-lg font-normal leading-relaxed text-panel-body w-full max-w-[58ch] min-w-0">
-                <p>
-                  Journalism trained me to find the thesis hidden in hours of noise. Then came the startups, which taught me what happens next: that same instinct built pipeline, earned press, and closed funding rounds.
-                </p>
-                <p>
-                  Today, I lead marketing for <a href="https://www.champ.ai/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Champ AI</a>, a <a href="https://www.redpoint.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Redpoint</a>-backed company built by former Instacart engineering leaders that sells outcomes instead of infrastructure.
-                </p>
-                <p>
-                  Before that, I led brand at <a href="https://www.zenskar.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Zenskar</a>, a <a href="https://www.bvp.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Bessemer</a>-backed AI billing platform, building the inbound marketing vehicle that drove its qualified pipeline.
-                </p>
-                <p>
-                  Before that, I built the SeedToScale editorial platform at <a href="https://www.accel.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Accel</a>, turning the private conviction of founders and investors into public frameworks the ecosystem still returns to.
-                </p>
-                <p>
-                  I have spent a decade profiling, interviewing, and working alongside technical founders. I know how to extract the conviction you already hold, and how to give it the form it needs to travel.
-                </p>
+            <div className="flex flex-col gap-8 md:gap-10">
+              <div className="flex flex-col min-[768px]:grid min-[768px]:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)] gap-[clamp(32px,4vw,52px)] items-start">
+                <div className="flex flex-col gap-5 text-lg font-normal leading-relaxed text-panel-body w-full max-w-[58ch] min-w-0">
+                  <p className="font-bold text-left text-[24px] italic leading-[44px]">
+                    Many technical companies do not have a marketing problem. They have a language problem.
+                  </p>
+                  <p>
+                    The product is clear inside the company. The founder can explain it across a table. But the idea changes shape as it travels: through the website, sales, launches, hiring, fundraising.
+                  </p>
+                  <p>
+                    More content does not fix that. It multiplies the inconsistency.
+                  </p>
+                  <p className="font-medium text-panel-heading">
+                    I treat narrative as infrastructure. It is the shared language a company uses to understand itself, and to teach the market to understand it.
+                  </p>
+                  <p>
+                    Journalism trained me to find the thesis hidden in hours of noise. Startups taught me what happens next. The same idea has to hold up in a pitch, a landing page and a sales call without drifting.
+                  </p>
+                </div>
+                <div className="w-full max-w-[420px] mx-auto min-[768px]:max-w-[360px] min-[768px]:justify-self-end min-[768px]:self-start">
+                  <img 
+                    src={portraitImg} 
+                    alt="Illustrated portrait of Sampath Putrevu" loading="lazy" width="800" height="800" className="w-full h-auto aspect-auto object-contain object-top rounded-[12px] shadow-sm grayscale opacity-90 p-[10px] bg-transparent"
+                  />
+                </div>
               </div>
-              <div className="w-full max-w-[420px] mx-auto min-[768px]:max-w-[360px] min-[768px]:justify-self-end min-[768px]:self-start">
-                <img 
-                  src={portraitImg} 
-                  alt="Illustrated portrait of Sampath Putrevu" loading="lazy" width="800" height="800" className="w-full h-auto aspect-auto object-contain object-top rounded-[12px] shadow-sm grayscale opacity-90 p-[10px] bg-transparent"
-                />
+              <div className="flex flex-col gap-5 text-lg font-normal leading-relaxed text-panel-body w-full min-w-0">
+                <p>
+                  At <a href="https://www.zenskar.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Zenskar</a>, the work began with language, for a product buyers could not yet describe. Distribution came after the positioning was clear enough to build on.
+                </p>
+                <p>
+                  At <a href="https://www.accel.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Accel</a>, I helped build SeedToScale. We turned what founders and investors knew privately into frameworks and company stories the ecosystem could use.
+                </p>
+                <p>
+                  Today I lead marketing for <a href="https://www.champ.ai/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Champ AI</a>, built by former Instacart engineering leaders. I translate a technically complex product into a business outcome buyers can act on.
+                </p>
+                <p>
+                  I have spent nearly a decade profiling, interviewing and working alongside technical founders. I know how to extract the conviction you already hold, and give it the form it needs to travel.
+                </p>
               </div>
             </div>
           </FadePanel>

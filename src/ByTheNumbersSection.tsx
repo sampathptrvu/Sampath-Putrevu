@@ -3,7 +3,7 @@ export default function ByTheNumbersSection() {
           <section className="work-list-panel">
             <h2 className="type-label-small mb-4 uppercase tracking-[0.1em]">By the numbers</h2>
             <h3 className="type-section-heading mb-6 text-balance">
-              Three roles. One operating system.
+              3 roles. 1 operating system.
             </h3>
             <p className="type-body-muted max-w-[68ch] text-pretty mb-10 md:mb-12">
               Journalism taught me to find the idea. Venture capital taught me to turn it into public knowledge. Startups taught me to carry it through the market.

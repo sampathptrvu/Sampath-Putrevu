@@ -57,7 +57,7 @@ export default function ByTheNumbersSection() {
                   </div>
                   <div>
                     <div className="font-sans font-bold text-[18px] text-panel-heading mb-1 tabular-nums">Delta 4</div>
-                    <div className="text-[15px] font-normal leading-[1.5] text-panel-body">Helped turn Kunal Shah's (Current WhatsApp CEO, Founder of CRED) idea into shared language still used by founders and investors across the ecosystem.</div>
+                    <div className="text-[15px] font-normal leading-[1.5] text-panel-body">Helped turn Kunal Shah's idea into shared language still used by founders and investors across the ecosystem.</div>
                   </div>
                 </div>
                 
@@ -73,7 +73,7 @@ export default function ByTheNumbersSection() {
                 <div className="flex flex-col gap-6 flex-grow">
                   <div>
                     <div className="font-sans font-bold text-[18px] text-panel-heading mb-1 tabular-nums">$2.5M in closed-won revenue</div>
-                    <div className="text-[15px] font-normal leading-[1.5] text-panel-body">Influenced by the organic inbound engine built at <a href="https://www.zenskar.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Zenskar</a>.</div>
+                    <div className="text-[15px] font-normal leading-[1.5] text-panel-body">Across roles through press, media launches and organic inbound marketing.</div>
                   </div>
                   <div>
                     <div className="font-sans font-bold text-[18px] text-panel-heading mb-1 tabular-nums">Contributed to <a href="https://web3auth.io/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Web3Auth</a> crossing $1M ARR</div>

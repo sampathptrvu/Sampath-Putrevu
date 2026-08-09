@@ -14,7 +14,7 @@ import { twMerge } from 'tailwind-merge';
 import linkedinIcon from './linkedin-icon.png';
 import whatsappIcon from './whatsapp-icon.png';
 
-import portraitImg from './assets/portrait.png';
+import portraitImg from './assets/portrait.webp';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));

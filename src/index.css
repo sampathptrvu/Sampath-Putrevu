@@ -92,7 +92,7 @@ html, body, button, input, textarea, select {
   
   /* CTA */
   --type-cta-h2-size: 25px;
-  --type-cta-p-size: 16px;
+  --type-cta-p-size: 24px;
   --type-btn-size: 15px;
 
   --font-display: "Plus Jakarta Sans", sans-serif;
@@ -351,11 +351,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: bold;
 }
-.footer-cta p {
-  margin: 0 0 29px;
-  font-size: 16px;
-  line-height: 1.5;
-}
+
 .footer-cta .social-links {
   margin-top: 29px;
 }

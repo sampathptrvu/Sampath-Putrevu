@@ -49,10 +49,11 @@ export default function WorkPage() {
             
             <div className="work-entry">
               <h3 className="type-card-heading-1 mb-3">Moved the conversation from software to outcomes.</h3>
-              <p className="type-card-heading-3 mt-4"><a href="https://www.champ.ai/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Champ AI</a> &middot; Fractional VP Marketing &middot; <a href="https://www.redpoint.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Redpoint</a>-backed, built by former Instacart engineering leaders</p>
+              <p className="type-card-heading-3 mt-4"><a href="https://www.champ.ai/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Champ AI</a> &middot; Fractional VP Marketing &middot; <a href="https://www.redpoint.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Redpoint</a>-backed, founded by operators with nearly a decade at Instacart between them</p>
               <p className="work-body mt-4">
                 Joined at the seed stage to define how the company talked about itself. Developed the category narrative that positions Champ as a way to buy outcomes without building infrastructure, and against legacy outsourcing rather than competing on AI features alone. Helped launch the company out of stealth, including Business Standard coverage, with its $8.5M seed fundraise backed by Redpoint, Defy VC, SV Angel and Instacart founder Max Mullen. The category had no settled name, so the language had to teach the market what it was looking at while the product was still proving it.
               </p>
+              <p className="work-evidence"><a href="https://www.globenewswire.com/news-release/2026/05/13/3294553/0/en/champ-ai-emerges-from-stealth-with-8-5m-in-new-funding.html" target="_blank" rel="noopener noreferrer">Funding announcement <span aria-hidden="true">↗</span></a></p>
             </div>
             
             <div className="work-entry">
@@ -61,6 +62,7 @@ export default function WorkPage() {
               <p className="work-body mt-4">
                 Led brand and inbound for a product that asked the market to unlearn how it priced software. Built and led a nine-person team across brand, founder marketing, editorial, search, design and distribution, developed the positioning and website narrative, and shipped 60+ search-led articles in under 90 days. The system influenced about $1.5M in closed-won deals, alongside a newsletter that held a 45% average open rate and TechCrunch coverage of the company’s announcements. The product challenged an established billing model, so every piece had to teach the problem before it could sell the answer.
               </p>
+              <p className="work-evidence"><a href="https://techcrunch.com/2022/10/03/saas-billing-platform-zenskar-funding-bessemer-ventures-partners/" target="_blank" rel="noopener noreferrer">TechCrunch coverage <span aria-hidden="true">↗</span></a></p>
             </div>
             
             <div className="work-entry">
@@ -69,6 +71,7 @@ export default function WorkPage() {
               <p className="work-body mt-4">
                 Built the content and brand engine from nothing: CMS, style guides, SEO foundation, verbal tone. Owned PR for global partner launches including <a href="https://www.fox.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Fox.com</a>, <a href="https://trustwallet.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Trust Wallet</a>, <a href="https://www.skplanet.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">SK Planet</a> and <a href="https://firebase.google.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Google Firebase</a>, earning coverage in Bloomberg and TechCrunch. Wrote the case studies documenting what customers achieved on the product: Pop Social’s 35% rise in signups after integrating, the 100,000+ wallets created with Treasure Chess, and social logins reaching a quarter of Biconomy’s users. When the Magic Link phishing attack and the MPC protocol attacks hit, I wrote the public statements.
               </p>
+              <p className="work-evidence"><a href="https://techcrunch.com/2022/01/12/web3auth-secures-13m-to-drive-mass-adoption-of-web3-apps-and-wallets-through-non-custodial-authentication-infrastructure/" target="_blank" rel="noopener noreferrer">TechCrunch coverage <span aria-hidden="true">↗</span></a></p>
             </div>
             
             <div className="work-entry">
@@ -77,6 +80,7 @@ export default function WorkPage() {
               <p className="work-body mt-4">
                 Built SeedToScale.com with the team from the ground up and produced 100+ editorial assets across foundational long-form resources, founder frameworks and podcasts. The job was turning the tacit knowledge of founders and investors into frameworks the ecosystem could actually use. Kunal Shah’s Delta 4 theory is the clearest example: the conviction was his, and the work here named it, structured it, and published it in a form founders still cite. The same work later extended to editorial and thought leadership for Prime Venture Partners, BoldCap and Anthill Ventures.
               </p>
+              <p className="work-evidence"><a href="https://www.seedtoscale.com/blog/kunal-shahs-delta-4-theory-of-successful-startups" target="_blank" rel="noopener noreferrer">Read the Delta 4 framework <span aria-hidden="true">↗</span></a></p>
             </div>
             
             <div className="work-entry">
@@ -85,11 +89,12 @@ export default function WorkPage() {
               <p className="work-body mt-4">
                 Came in as the first marketing hire and defined the brand from zero: content guidelines, style guides, web layouts, social presence. Led PR across every significant company moment, working directly with the founders on each one. Series A landed in CNBC and Economic Times, Series B in MoneyControl, and the two acquisitions in Mint, VCCircle, and Business World, with a thought leadership piece for the CEO placed in the Indian Express.
               </p>
+              <p className="work-evidence"><a href="https://economictimes.indiatimes.com/tech/funding/edtech-startup-masai-school-gets-5-million-funding-led-by-omidyar/articleshow/81699496.cms" target="_blank" rel="noopener noreferrer">Economic Times coverage <span aria-hidden="true">↗</span></a></p>
             </div>
             
             <div className="work-entry">
               <h3 className="type-card-heading-1 mb-3">Learned to find the real idea beneath a founder's first answer.</h3>
-              <p className="type-card-heading-3 mt-4"><a href="https://yourstory.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">YourStory</a> &middot; Tech and Startup Journalist &middot; India’s TechCrunch</p>
+              <p className="type-card-heading-3 mt-4"><a href="https://yourstory.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">YourStory</a> &middot; Tech and Startup Journalist &middot; Indian startup media publication</p>
               <p className="work-body mt-4">
                 Owned Techie Tuesdays, created The Turning Point, and built The Product Roadmap from the ground up. Spent four years profiling the founders building India's internet economy, interviewing Dharmesh Shah, Razorpay’s Shashank Kumar, Google Maps India creator Lalitesh Katragadda, the Postman founders, and 350+ operators at inflection points in their companies. This is where I learned that the most important thing a founder says is rarely the first thing they say.
               </p>
@@ -110,6 +115,7 @@ export default function WorkPage() {
             Book a call
           </a>
         </div>
+        <p className="mt-4 text-[15px] text-white/75 text-center">A first conversation to test the fit—no deck or pitch required.</p>
         
         <div className="flex justify-center items-center gap-8 mt-16">
           <a 

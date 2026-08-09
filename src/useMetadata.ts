@@ -12,8 +12,19 @@ interface MetadataConfig {
 }
 
 export function useMetadata(config: MetadataConfig) {
+  const {
+    title,
+    description,
+    canonical,
+    ogTitle,
+    ogDescription,
+    ogUrl,
+    ogType = 'website',
+    ogImage,
+  } = config;
+
   useEffect(() => {
-    document.title = config.title;
+    document.title = title;
 
     const setMeta = (selector: string, content: string, attribute = 'name') => {
       let element = document.querySelector(`meta[${attribute}="${selector}"]`);
@@ -25,13 +36,13 @@ export function useMetadata(config: MetadataConfig) {
       element.setAttribute('content', content);
     };
 
-    setMeta('description', config.description);
-    setMeta('og:title', config.ogTitle, 'property');
-    setMeta('og:description', config.ogDescription, 'property');
-    setMeta('og:url', config.ogUrl, 'property');
-    setMeta('og:type', config.ogType || 'website', 'property');
-    setMeta('twitter:title', config.ogTitle);
-    setMeta('twitter:description', config.ogDescription);
+    setMeta('description', description);
+    setMeta('og:title', ogTitle, 'property');
+    setMeta('og:description', ogDescription, 'property');
+    setMeta('og:url', ogUrl, 'property');
+    setMeta('og:type', ogType, 'property');
+    setMeta('twitter:title', ogTitle);
+    setMeta('twitter:description', ogDescription);
 
     let canonicalEl = document.querySelector(`link[rel="canonical"]`);
     if (!canonicalEl) {
@@ -39,11 +50,12 @@ export function useMetadata(config: MetadataConfig) {
       canonicalEl.setAttribute('rel', 'canonical');
       document.head.appendChild(canonicalEl);
     }
-    canonicalEl.setAttribute('href', config.canonical);
+    canonicalEl.setAttribute('href', canonical);
 
-    if (config.ogImage) {
-      setMeta('og:image', config.ogImage, 'property');
-      setMeta('og:image:secure_url', config.ogImage, 'property');
-      setMeta('twitter:image', config.ogImage);
+    if (ogImage) {
+      setMeta('og:image', ogImage, 'property');
+      setMeta('og:image:secure_url', ogImage, 'property');
+      setMeta('twitter:image', ogImage);
     }
-  }, [config]);}
+  }, [canonical, description, ogDescription, ogImage, ogTitle, ogType, ogUrl, title]);
+}

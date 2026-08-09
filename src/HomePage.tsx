@@ -3,22 +3,15 @@ import bessemerLogo from './bessemer-logo.svg';
 import redpointLogo from './Redpoint.png';
 import sequoiaLogo from './sequoia-logo.svg';
 import { useMetadata } from './useMetadata';
-import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Header from './Header';
 import ByTheNumbersSection from './ByTheNumbersSection';
-import { motion, useScroll, useTransform } from 'motion/react';
+import { motion, type HTMLMotionProps } from 'motion/react';
 import { Mail, ScanSearch, Crop, Send } from 'lucide-react';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 import linkedinIcon from './linkedin-icon.png';
 import whatsappIcon from './whatsapp-icon.png';
 
-import portraitImg from './assets/portrait.png';
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
+import portraitImg from './assets/portrait.webp';
 
 const fitCriteria = [
   {
@@ -39,28 +32,9 @@ const fitCriteria = [
   }
 ];
 
-function FadePanel({ children, className, variants, initial, whileInView, animate, transition, viewport, ...props }: any) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"]
-  });
-  const bgOpacity = useTransform(scrollYProgress, [0, 0.4, 0.5, 0.6, 1], [1, 1, 1, 1, 1]);
-  const backgroundColor = useTransform(bgOpacity, (alpha) => `rgba(255, 250, 242, 0.96)`);
-  
+function FadePanel({ children, ...props }: HTMLMotionProps<'div'>) {
   return (
-    <motion.div 
-      ref={ref} 
-      className={className}
-      variants={variants}
-      initial={initial}
-      whileInView={whileInView}
-      animate={animate}
-      transition={transition}
-      viewport={viewport}
-      {...props}
-    >
+    <motion.div {...props}>
       {children}
     </motion.div>
   );
@@ -129,7 +103,7 @@ export default function HomePage() {
         {/* Credibility Section */}
         <section className="credibility-row">
           <div className="credibility-strip credibility-inner flex-col md:flex-row flex-wrap min-[1100px]:grid min-[1100px]:grid-cols-[auto_1fr] justify-center items-center gap-y-4 gap-x-4 md:gap-x-6 lg:gap-x-8 py-5 md:py-4 px-4 md:px-6">
-            <p className="font-medium text-[18px] text-center leading-snug text-[#252724] whitespace-nowrap">
+            <p className="font-medium text-[18px] text-center leading-snug text-[#252724] md:whitespace-nowrap">
               Trusted by founders and teams backed by
             </p>
             <div className="flex flex-wrap md:flex-nowrap min-[1100px]:grid min-[1100px]:grid-cols-4 justify-center items-center gap-x-6 gap-y-4 md:gap-x-6 min-[1100px]:gap-x-0 w-full">
@@ -221,116 +195,53 @@ export default function HomePage() {
 
               </div>
               <div className="mt-12 pt-10 border-t border-divider-light">
-                <h3 className="type-section-heading mb-8 text-balance !text-[32px] !font-normal">
-                  One narrative. The full range.
+                <h3 className="type-section-heading mb-4 text-balance !text-[32px] !font-normal">
+                  Three ways to put the narrative to work.
                 </h3>
-                
-                <div className="flex flex-col md:grid md:grid-cols-2 gap-y-8 md:gap-y-10 md:gap-x-12">
-                  {/* Block 1 */}
-                  <div className="flex flex-col pb-8 md:pb-0 border-b border-divider-light md:border-b-0 md:border-r md:pr-12 group">
-                    <h4 className="type-card-heading-2 mb-2 text-balance">Brand and founder positioning</h4>
-                    <p className="type-body mb-4 !font-normal">
-                      The company becomes easier to understand, harder to confuse with competitors, and its founders can explain it the same way whether they're pitching a customer, an investor, or a candidate.
+                <p className="type-body-muted max-w-[68ch] text-pretty mb-8 md:mb-10">
+                  The engagement starts with the language problem, then extends only into the channels that need to carry the answer.
+                </p>
+
+                <div className="flex flex-col min-[900px]:grid min-[900px]:grid-cols-3 gap-0 min-[900px]:gap-8">
+                  <div className="flex flex-col pb-7 min-[900px]:pb-0 border-b border-divider-light min-[900px]:border-b-0 min-[900px]:border-r min-[900px]:pr-8">
+                    <h4 className="type-card-heading-2 mb-3 text-balance">Narrative foundation</h4>
+                    <p className="type-body-muted mb-5">
+                      Make the company easier to understand and harder to confuse with competitors.
                     </p>
-                    <ul className="type-body space-y-1 list-disc pl-4 !font-normal">
+                    <ul className="type-body-muted space-y-1.5 list-disc pl-5">
                       <li>Company positioning</li>
                       <li>Core narrative</li>
                       <li>Founder narrative</li>
                       <li>Website messaging</li>
                       <li>Verbal identity and tone</li>
-                      <li>Language for sales, hiring, and fundraising</li>
-                      <li>Internal messaging consistency</li>
-                      <li>Brand guidelines</li>
                     </ul>
                   </div>
 
-                  {/* Block 2 */}
-                  <div className="flex flex-col pb-8 md:pb-0 border-b border-divider-light md:border-b-0 group">
-                    <h4 className="type-card-heading-2 mb-2 text-balance">Content and editorial systems</h4>
-                    <p className="type-body mb-4 !font-normal">
-                      The company builds a body of work that keeps earning attention long after a single campaign ends, instead of starting over with every new push.
+                  <div className="flex flex-col py-7 min-[900px]:py-0 border-b border-divider-light min-[900px]:border-b-0 min-[900px]:border-r min-[900px]:pr-8">
+                    <h4 className="type-card-heading-2 mb-3 text-balance">Market-defining moments</h4>
+                    <p className="type-body-muted mb-5">
+                      Give important company moments a story that strengthens market perception beyond the news cycle.
                     </p>
-                    <ul className="type-body space-y-1 list-disc pl-4 !font-normal">
-                      <li>Editorial strategy</li>
-                      <li>Long-form articles</li>
-                      <li>Newsletters</li>
-                      <li>Research and reports</li>
-                      <li>Customer stories</li>
-                      <li>SEO content</li>
-                      <li>Content distribution</li>
-                      <li>Editorial operations</li>
+                    <ul className="type-body-muted space-y-1.5 list-disc pl-5">
+                      <li>Fundraises and launches</li>
+                      <li>PR and media strategy</li>
+                      <li>Announcement sequencing</li>
+                      <li>Partner coordination</li>
+                      <li>Crisis communications</li>
                     </ul>
                   </div>
 
-                  {/* Block 3 */}
-                  <div className="flex flex-col pb-8 md:pb-0 border-b border-divider-light md:border-b-0 md:border-r md:pr-12 md:border-t md:border-divider-light md:pt-10 group">
-                    <h4 className="type-card-heading-2 mb-2 text-balance">LinkedIn and X</h4>
-                    <p className="type-body mb-4 !font-normal">
-                      The founder develops a public voice people recognize and follow, one that becomes shorthand for the company's point of view.
+                  <div className="flex flex-col pt-7 min-[900px]:pt-0">
+                    <h4 className="type-card-heading-2 mb-3 text-balance">Authority systems</h4>
+                    <p className="type-body-muted mb-5">
+                      Build a body of work that earns attention repeatedly instead of starting over with every campaign.
                     </p>
-                    <ul className="type-body space-y-1 list-disc pl-4 !font-normal">
-                      <li>Founder voice and pillars</li>
-                      <li>Posts and threads</li>
-                      <li>Technical and category education</li>
-                      <li>Founder stories</li>
-                      <li>Launch distribution</li>
-                      <li>Publishing cadence</li>
-                      <li>Community engagement</li>
-                      <li>Cross-handle repurposing</li>
-                    </ul>
-                  </div>
-
-                  {/* Block 4 */}
-                  <div className="flex flex-col pb-8 md:pb-0 border-b border-divider-light md:border-b-0 md:border-t md:border-divider-light md:pt-10 group">
-                    <h4 className="type-card-heading-2 mb-2 text-balance">PR and crisis communications</h4>
-                    <p className="type-body mb-4 !font-normal">
-                      The company earns credibility in outlets the market already trusts, and has language ready that holds up when scrutiny is highest.
-                    </p>
-                    <ul className="type-body space-y-1 list-disc pl-4 !font-normal">
-                      <li>Media strategy</li>
-                      <li>Press releases</li>
-                      <li>Journalist outreach</li>
-                      <li>Press kits</li>
-                      <li>Spokesperson preparation</li>
-                      <li>Agency management</li>
-                      <li>Crisis response</li>
-                      <li>Post-coverage amplification</li>
-                    </ul>
-                  </div>
-
-                  {/* Block 5 */}
-                  <div className="flex flex-col pb-8 md:pb-0 border-b border-divider-light md:border-b-0 md:border-r md:pr-12 md:border-t md:border-divider-light md:pt-10 group">
-                    <h4 className="type-card-heading-2 mb-2 text-balance">Fundraises and launches</h4>
-                    <p className="type-body mb-4 !font-normal">
-                      Important company moments land with a story clear enough to outlast the news cycle, so the announcement strengthens how the market understands the business.
-                    </p>
-                    <ul className="type-body space-y-1 list-disc pl-4 !font-normal">
-                      <li>Announcement positioning</li>
-                      <li>Founder messaging</li>
-                      <li>Press strategy</li>
-                      <li>Website messaging</li>
-                      <li>Investor and partner coordination</li>
-                      <li>Launch-day sequencing</li>
+                    <ul className="type-body-muted space-y-1.5 list-disc pl-5">
+                      <li>Founder voice and thought leadership</li>
+                      <li>Editorial and research</li>
                       <li>Customer proof</li>
-                      <li>Follow-up distribution</li>
-                    </ul>
-                  </div>
-
-                  {/* Block 6 */}
-                  <div className="flex flex-col md:border-t md:border-divider-light md:pt-10 group">
-                    <h4 className="type-card-heading-2 mb-2 text-balance">Webinars and podcasts</h4>
-                    <p className="type-body mb-4 !font-normal">
-                      The company turns its expertise into a recurring format people return to, building authority and a library of material that keeps working long after it airs.
-                    </p>
-                    <ul className="type-body space-y-1 list-disc pl-4 !font-normal">
-                      <li>Format strategy</li>
-                      <li>Guest booking</li>
-                      <li>Editorial development</li>
-                      <li>Speaker preparation</li>
-                      <li>Promotion and registration</li>
-                      <li>Live production</li>
-                      <li>Podcast production</li>
-                      <li>Content repurposing</li>
+                      <li>Webinars and podcasts</li>
+                      <li>Distribution systems</li>
                     </ul>
                   </div>
                 </div>
@@ -390,7 +301,7 @@ export default function HomePage() {
                   At <a href="https://www.accel.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Accel</a>, I helped build SeedToScale. We turned what founders and investors knew privately into frameworks and company stories the ecosystem could use.
                 </p>
                 <p>
-                  Today I lead marketing for <a href="https://www.champ.ai/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Champ AI</a>, built by former Instacart engineering leaders. I translate a technically complex product into a business outcome buyers can act on.
+                  Today I lead marketing for <a href="https://www.champ.ai/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Champ AI</a>, founded by operators with nearly a decade at Instacart between them. I translate a technically complex product into a business outcome buyers can act on.
                 </p>
                 <p>
                   I have spent nearly a decade profiling, interviewing and working alongside technical founders. I know how to extract the conviction you already hold, and give it the form it needs to travel.
@@ -451,6 +362,7 @@ export default function HomePage() {
               Book a call
             </a>
           </div>
+          <p className="mt-4 text-[15px] text-white/75">A first conversation to test the fit—no deck or pitch required.</p>
           
           <div className="social-links flex justify-center items-center gap-8">
             <a 

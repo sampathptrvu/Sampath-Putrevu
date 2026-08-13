@@ -14,7 +14,7 @@ import { twMerge } from 'tailwind-merge';
 import linkedinIcon from './linkedin-icon.png';
 import whatsappIcon from './whatsapp-icon.png';
 
-import portraitImg from './assets/portrait.webp';
+import portraitImg from './assets/portrait.png';
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -127,25 +127,23 @@ export default function HomePage() {
 
         
         {/* Credibility Section */}
-        <section className="credibility-row">
-          <div className="credibility-strip credibility-inner flex-col md:flex-row flex-wrap min-[1100px]:grid min-[1100px]:grid-cols-[auto_1fr] justify-center items-center gap-y-4 gap-x-4 md:gap-x-6 lg:gap-x-8 py-5 md:py-4 px-4 md:px-6">
-            <p className="font-medium text-[18px] text-center leading-snug text-[#252724] whitespace-nowrap">
+        <section className="w-full max-w-[var(--page-max-width)] mx-auto px-[var(--page-gutter)] my-8 sm:my-10">
+          <div className="bg-white rounded-[18px] py-6 px-6 sm:px-8 lg:px-10 border border-divider-light shadow-sm grid grid-cols-2 lg:grid-cols-[max-content_max-content_max-content_max-content_max-content] lg:justify-center items-center gap-y-4 gap-x-6 lg:gap-x-6 xl:gap-x-10 w-full">
+            <div className="col-span-2 lg:col-span-1 font-medium text-[15px] sm:text-[16px] lg:text-[17px] text-center lg:text-left leading-snug text-[#252724] tracking-tight whitespace-normal lg:whitespace-nowrap">
               Trusted by founders and teams backed by
-            </p>
-            <div className="flex flex-wrap md:flex-nowrap min-[1100px]:grid min-[1100px]:grid-cols-4 justify-center items-center gap-x-6 gap-y-4 md:gap-x-6 min-[1100px]:gap-x-0 w-full">
-              <a href="https://www.accel.com/" target="_blank" rel="noopener noreferrer" aria-label="Accel" className="flex-shrink-0 flex items-center justify-center min-[1100px]:w-full">
-                <img src={accelLogo} alt="" className="h-[24px] md:h-[26px] min-[1100px]:h-[22px] w-auto object-contain block" />
-              </a>
-              <a href="https://www.bvp.com/" target="_blank" rel="noopener noreferrer" aria-label="Bessemer" className="flex-shrink-0 flex items-center justify-center min-[1100px]:w-full">
-                <img src={bessemerLogo} alt="" className="h-[20px] md:h-[22px] min-[1100px]:h-[18px] w-auto object-contain block" />
-              </a>
-              <a href="https://www.redpoint.com/" target="_blank" rel="noopener noreferrer" aria-label="Redpoint" className="flex-shrink-0 flex items-center justify-center min-[1100px]:w-full">
-                <img src={redpointLogo} alt="" className="h-[28px] md:h-[30px] min-[1100px]:h-[24px] w-auto object-contain block" />
-              </a>
-              <a href="https://www.sequoiacap.com/" target="_blank" rel="noopener noreferrer" aria-label="Sequoia" className="flex-shrink-0 flex items-center justify-center min-[1100px]:w-full">
-                <img src={sequoiaLogo} alt="" className="h-[16px] md:h-[18px] min-[1100px]:h-[15px] w-auto object-contain block" />
-              </a>
             </div>
+            <a href="https://www.accel.com/" target="_blank" rel="noopener noreferrer" aria-label="Accel" className="col-span-1 flex items-center justify-center min-w-0 w-full lg:w-auto h-8">
+              <img src={accelLogo} alt="Accel" className="max-h-6 sm:max-h-7 max-w-[155px] lg:max-w-[170px] w-auto h-auto object-contain hover:opacity-80 transition-opacity" />
+            </a>
+            <a href="https://www.bvp.com/" target="_blank" rel="noopener noreferrer" aria-label="Bessemer Venture Partners" className="col-span-1 flex items-center justify-center min-w-0 w-full lg:w-auto h-8">
+              <img src={bessemerLogo} alt="Bessemer Venture Partners" className="h-6 sm:h-7 max-w-[125px] lg:max-w-[140px] w-auto object-contain hover:opacity-80 transition-opacity" />
+            </a>
+            <a href="https://www.redpoint.com/" target="_blank" rel="noopener noreferrer" aria-label="Redpoint Ventures" className="col-span-1 flex items-center justify-center min-w-0 w-full lg:w-auto h-8">
+              <img src={redpointLogo} alt="Redpoint Ventures" className="max-h-5 sm:max-h-6 max-w-[135px] lg:max-w-[155px] w-auto h-auto object-contain hover:opacity-80 transition-opacity" />
+            </a>
+            <a href="https://www.sequoiacap.com/" target="_blank" rel="noopener noreferrer" aria-label="Sequoia Capital" className="col-span-1 flex items-center justify-center min-w-0 w-full lg:w-auto h-8">
+              <img src={sequoiaLogo} alt="Sequoia Capital" className="max-h-5 sm:max-h-6 max-w-[150px] lg:max-w-[175px] w-auto h-auto object-contain hover:opacity-80 transition-opacity" />
+            </a>
           </div>
         </section>
 

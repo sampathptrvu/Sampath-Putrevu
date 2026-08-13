@@ -154,14 +154,14 @@ export default function Header() {
           {/* Right: Social, Email, CTA & Hamburger */}
           <div className="flex items-center gap-2 sm:gap-4 md:gap-[16px] min-[1100px]:gap-6 z-10 shrink-0">
             {/* Desktop / Tablet Links */}
-            <div className="hidden md:flex items-center gap-[12px] min-[1100px]:gap-3">
-              <a href="https://www.linkedin.com/in/sampathputrevu/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="LinkedIn">
+            <div className="hidden md:flex items-center gap-3 px-[16px] py-[10px] rounded-full bg-ink/35 backdrop-blur-[10px] border border-white/20 shadow-[0_2px_10px_rgba(0,0,0,0.25)]">
+              <a href="https://www.linkedin.com/in/sampathputrevu/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink rounded" aria-label="LinkedIn">
                 <div className="w-[23.24px] h-[23.24px] bg-current shrink-0" style={{ maskImage: `url(${linkedinIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${linkedinIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
               </a>
-              <a href="mailto:sampathptrvu@gmail.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="Email">
+              <a href="mailto:sampathptrvu@gmail.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink rounded" aria-label="Email">
                 <Mail className="w-[23.24px] h-[23.24px] shrink-0" />
               </a>
-              <a href="https://wa.me/919989546250" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="WhatsApp">
+              <a href="https://wa.me/919989546250" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink rounded" aria-label="WhatsApp">
                 <div className="w-[23.24px] h-[23.24px] bg-current shrink-0" style={{ maskImage: `url(${whatsappIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${whatsappIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
               </a>
             </div>
@@ -177,19 +177,18 @@ export default function Header() {
             </a>
 
             {/* Hamburger Menu Toggle (Mobile only, or Tablet if needed) */}
-            {/* But prompt says: "Keep LinkedIn, Email, and all five navigation links inside the hamburger menu" on mobile. */}
             <button 
               ref={hamburgerRef}
               onClick={() => setIsMobileMenuOpen(true)}
-              className="min-[1100px]:hidden menu-toggle flex flex-col justify-center gap-[6px] shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-transparent rounded-[4px]"
+              className="min-[1100px]:hidden menu-toggle flex flex-col items-center justify-center gap-[5px] shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-transparent rounded-[8px] bg-ink/35 backdrop-blur-[10px] border border-white/20 shadow-[0_2px_10px_rgba(0,0,0,0.25)] hover:bg-ink/50 transition-colors"
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
               aria-label="Open menu"
-              style={{ width: '40px', height: '40px', alignItems: 'flex-end', justifyContent: 'center' }}
+              style={{ width: '40px', height: '40px' }}
             >
-              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
-              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
-              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
+              <span className="rounded-full h-[2px] w-[20px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.4)' }}></span>
+              <span className="rounded-full h-[2px] w-[20px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.4)' }}></span>
+              <span className="rounded-full h-[2px] w-[20px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.4)' }}></span>
             </button>
           </div>
         </div>

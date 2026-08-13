@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomePage from './HomePage';
 import WorkPage from './WorkPage';
 import NotFoundPage from './NotFoundPage';
-import homepageBackground from './homepage-background.webp';
+import homepageBackground from './homepage-background.png';
 
 export default function App() {
   return (

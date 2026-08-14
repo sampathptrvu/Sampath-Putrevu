@@ -38,15 +38,15 @@ export default function StoryDetailPage() {
             <p className="type-body-muted mb-[32px]">
               {story.metadata}
             </p>
-
+            
             <div className="mb-[40px] pt-[32px] border-t border-divider-light">
               <p className="work-body mb-6">
                 Reported and written by Sampath Putrevu.
               </p>
-              <a
-                href={story.originalUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <a 
+                href={story.originalUrl} 
+                target="_blank" 
+                rel="noopener noreferrer" 
                 className="type-button-ghost inline-flex items-center text-burgundy font-medium hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-burgundy rounded-[2px]"
               >
                 Read the original on YourStory <ExternalLink className="w-5 h-5 ml-1.5" />

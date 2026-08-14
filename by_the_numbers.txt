@@ -1,9 +1,7 @@
-export default function ByTheNumbersSection() {
-  return (
           <section className="work-list-panel">
             <h2 className="type-label-small mb-4 uppercase tracking-[0.1em]">By the numbers</h2>
             <h3 className="type-section-heading mb-6 text-balance">
-              3 roles. 1 operating system.
+              Three roles. One operating system.
             </h3>
             <p className="type-body-muted max-w-[68ch] text-pretty mb-10 md:mb-12">
               Journalism taught me to find the idea. Venture capital taught me to turn it into public knowledge. Startups taught me to carry it through the market.
@@ -53,7 +51,11 @@ export default function ByTheNumbersSection() {
                   </div>
                   <div>
                     <div className="font-sans font-bold text-[18px] text-panel-heading mb-1 tabular-nums">Multiple founder-education franchises</div>
-                    <div className="text-[15px] font-normal leading-[1.5] text-panel-body">Built across First 500 Days, Scale Playbook, engineering-leadership content, and Atoms founder stories.</div>
+                    <div className="text-[15px] font-normal leading-[1.5] text-panel-body">Built across First 500 Days, Delta 4, Scale Playbook, engineering-leadership content, and Atoms founder stories.</div>
+                  </div>
+                  <div>
+                    <div className="font-sans font-bold text-[18px] text-panel-heading mb-1 tabular-nums">Delta 4</div>
+                    <div className="text-[15px] font-normal leading-[1.5] text-panel-body">Helped turn Kunal Shah's (Current WhatsApp CEO, Founder of CRED) idea into shared language still used by founders and investors across the ecosystem.</div>
                   </div>
                 </div>
                 
@@ -94,7 +96,3 @@ export default function ByTheNumbersSection() {
                 </div>
               </div>
             </div>
-
-          </section>
-  );
-}

@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 import { prerenderPlugin } from './prerenderPlugin';
 
 export default defineConfig(() => {
-
+  
   return {
     plugins: [react(), tailwindcss(), prerenderPlugin()],
     resolve: {

@@ -17,9 +17,9 @@ export function prerenderPlugin() {
     closeBundle() {
       const outDir = path.resolve(__dirname, 'dist');
       const indexPath = path.join(outDir, 'index.html');
-
+      
       if (!fs.existsSync(indexPath)) return;
-
+      
       const template = fs.readFileSync(indexPath, 'utf-8');
 
       const routes = [

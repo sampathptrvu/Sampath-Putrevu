@@ -49,11 +49,11 @@ function FadePanel({ children, className, variants, initial, whileInView, animat
   });
   const bgOpacity = useTransform(scrollYProgress, [0, 0.4, 0.5, 0.6, 1], [1, 1, 1, 1, 1]);
   const backgroundColor = useTransform(bgOpacity, (alpha) => `rgba(255, 250, 242, 0.96)`);
-
+  
   return (
-    <motion.div
-      ref={ref}
-      className={cn("relative", className)}
+    <motion.div 
+      ref={ref} 
+      className={className}
       variants={variants}
       initial={initial}
       whileInView={whileInView}
@@ -80,15 +80,15 @@ export default function HomePage() {
     ogType: "website"
   });
 
-
+  
 
   return (
     <div className="min-h-screen selection:bg-burgundy selection:text-warm-white font-sans text-warm-white">
       <Header />
-
+      
       <main className="homepage-content-stack pb-12">
-
-
+        
+        
         {/* Hero Section */}
         <section className="hero-panel-stage">
           <motion.div
@@ -106,9 +106,9 @@ export default function HomePage() {
                 <p className="type-hero-description mb-[32px]" style={{ textShadow: "0 2px 8px rgba(0, 0, 0, 0.38)" }}>
                   I find the idea only your company can own, and give it language the market can repeat.
                 </p>
-
+                
                 <div className="hero-actions">
-                  <a
+                  <a 
                     href="https://cal.com/sampath-putrevu-z6jq0i"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -116,7 +116,7 @@ export default function HomePage() {
                   >
                     Book a call
                   </a>
-                  <Link
+                  <Link 
                     to="/work"
                     className="w-full md:w-auto text-center inline-flex items-center justify-center px-5 md:px-[22px] py-[11px] bg-white/10 backdrop-blur-sm border border-white/20 text-warm-white rounded-[4px] type-button hover:bg-white/15 transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent cursor-pointer shadow-sm"
                   >
@@ -126,11 +126,11 @@ export default function HomePage() {
             </motion.div>
         </section>
 
-
+        
         {/* Credibility Section */}
         <section className="credibility-row">
           <div className="credibility-strip credibility-inner flex flex-wrap min-[1100px]:grid min-[1100px]:grid-cols-[max-content_max-content_max-content_max-content_max-content] min-[1100px]:justify-center min-[1100px]:items-center justify-center items-center gap-y-4 gap-x-6 min-[1100px]:gap-x-[32px] min-[1100px]:gap-y-0 py-5 md:py-4 min-[1100px]:py-[24px] px-4 md:px-6 min-[1100px]:px-[40px]">
-            <p className="w-full min-[1100px]:w-auto font-medium text-[18px] text-center leading-snug text-[#252724] whitespace-normal md:whitespace-nowrap">
+            <p className="w-full min-[1100px]:w-auto font-medium text-[18px] text-center leading-snug text-[#252724] whitespace-nowrap">
               Trusted by founders and teams backed by
             </p>
             <a href="https://www.accel.com/" target="_blank" rel="noopener noreferrer" aria-label="Accel" className="flex items-center justify-center min-w-0 w-auto">
@@ -163,10 +163,10 @@ export default function HomePage() {
               <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
             </div>
           </div>
-
+          
           <FadePanel className={panelClass}>
             <div className="flex flex-col min-[900px]:grid min-[900px]:grid-cols-3 gap-0 min-[900px]:gap-8">
-
+                
                 {/* 01 */}
                 <div className="flex flex-col pb-6 min-[900px]:pb-0 border-b border-divider-light min-[900px]:border-b-0 min-[900px]:border-r min-[900px]:pr-8 group hover:-translate-y-1 transition-transform duration-300 ease-out">
                   <div className="flex items-center gap-3 mb-4">
@@ -223,7 +223,7 @@ export default function HomePage() {
                 <h3 className="type-section-heading mb-8 text-balance !text-[32px] !font-normal">
                   One narrative. The full range.
                 </h3>
-
+                
                 <div className="flex flex-col md:grid md:grid-cols-2 gap-y-8 md:gap-y-10 md:gap-x-12">
                   {/* Block 1 */}
                   <div className="flex flex-col pb-8 md:pb-0 border-b border-divider-light md:border-b-0 md:border-r md:pr-12 group">
@@ -353,7 +353,7 @@ export default function HomePage() {
               <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
             </div>
           </div>
-
+          
           <FadePanel className={panelClass}>
             <div className="flex flex-col gap-[24px]">
               <div className="flex flex-col min-[768px]:grid min-[768px]:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)] gap-[32px] min-[768px]:gap-[clamp(32px,4vw,52px)] items-start">
@@ -375,8 +375,8 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="w-full max-w-[420px] mx-auto min-[768px]:max-w-[360px] min-[768px]:justify-self-end min-[768px]:self-start">
-                  <img
-                    src={portraitImg}
+                  <img 
+                    src={portraitImg} 
                     alt="Illustrated portrait of Sampath Putrevu" loading="lazy" width="800" height="800" className="w-full h-auto aspect-auto object-contain object-top rounded-[12px] shadow-sm grayscale opacity-90 p-[10px] bg-transparent"
                   />
                 </div>
@@ -411,7 +411,7 @@ export default function HomePage() {
               <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
             </div>
           </div>
-
+          
           <FadePanel className={panelClass}>
             <div className="flex flex-col gap-8 md:gap-10">
               <div className="flex flex-col gap-6 text-lg font-normal leading-relaxed text-panel-body max-w-[65ch]">
@@ -465,7 +465,7 @@ export default function HomePage() {
               <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
             </div>
           </div>
-
+          
           <FadePanel className={panelClass}>
             <h3 className="type-section-heading-burgundy mb-6 md:mb-[30px] text-balance !font-normal !text-[34px]">Who should hire me?</h3>
             <div className="flex flex-col">
@@ -476,7 +476,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-
+            
             <div className="pt-[26px] md:pt-[30px] mt-[26px] md:mt-[30px] border-t border-divider-light">
               <h4 className="type-card-heading-3 mb-3 text-balance !text-[34px] !font-normal">Not the right fit</h4>
               <div className="type-body-muted space-y-2 max-w-[72ch] text-pretty">
@@ -490,13 +490,13 @@ export default function HomePage() {
           </div>
         </section>
 
-
+        
             {/* Final CTA */}
       <section className="footer-cta">
         <div className="footer-cta-inner">
           <p className="type-cta-body mb-[29px]">If your product is ahead of its language, that's where we start.</p>
           <div className="flex justify-center items-center">
-            <a
+            <a 
               href="https://cal.com/sampath-putrevu-z6jq0i"
               target="_blank"
               rel="noopener noreferrer"
@@ -505,17 +505,17 @@ export default function HomePage() {
               Book a call
             </a>
           </div>
-
+          
           <div className="social-links flex justify-center items-center gap-8">
-            <a
-              href="https://www.linkedin.com/in/sampathputrevu/"
-              target="_blank"
-              rel="noopener noreferrer"
+            <a 
+              href="https://www.linkedin.com/in/sampathputrevu/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
               className="text-white/90 hover:text-white transition-colors flex items-center p-3 -m-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded-sm"
               aria-label="LinkedIn"
             >
-              <div
-                className="w-[28px] h-[28px] bg-current"
+              <div 
+                className="w-[28px] h-[28px] bg-current" 
                 style={{
                   maskImage: `url(${linkedinIcon})`,
                   maskSize: 'contain',
@@ -528,24 +528,24 @@ export default function HomePage() {
                 }}
               />
             </a>
-            <a
-              href="mailto:sampathptrvu@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
+            <a 
+              href="mailto:sampathptrvu@gmail.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
               className="text-white/90 hover:text-white transition-colors flex items-center p-3 -m-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded-sm"
               aria-label="Email"
             >
               <Mail className="w-[28px] h-[28px]" />
             </a>
-            <a
-              href="https://wa.me/919989546250"
-              target="_blank"
-              rel="noopener noreferrer"
+            <a 
+              href="https://wa.me/919989546250" 
+              target="_blank" 
+              rel="noopener noreferrer" 
               className="text-white/90 hover:text-white transition-colors flex items-center p-3 -m-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded-sm"
               aria-label="WhatsApp"
             >
-              <div
-                className="w-[28px] h-[28px] bg-current"
+              <div 
+                className="w-[28px] h-[28px] bg-current" 
                 style={{
                   maskImage: `url(${whatsappIcon})`,
                   maskSize: 'contain',

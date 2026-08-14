@@ -9,6 +9,7 @@ interface MetadataConfig {
   ogUrl: string;
   ogType?: string;
   ogImage?: string;
+  robots?: string;
 }
 
 export function useMetadata(config: MetadataConfig) {
@@ -46,4 +47,14 @@ export function useMetadata(config: MetadataConfig) {
       setMeta('og:image:secure_url', config.ogImage, 'property');
       setMeta('twitter:image', config.ogImage);
     }
-  }, [config]);}
+
+    if (config.robots) {
+      setMeta('robots', config.robots);
+    } else {
+      const robotsEl = document.querySelector(`meta[name="robots"]`);
+      if (robotsEl) {
+        robotsEl.remove();
+      }
+    }
+  }, [config]);
+}

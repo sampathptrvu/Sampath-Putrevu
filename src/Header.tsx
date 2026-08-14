@@ -118,7 +118,7 @@ export default function Header() {
   return (
     <>
       {/* Header */}
-      <div 
+      <div
         className={cn(
           "w-full z-50 pointer-events-auto transition-colors duration-200",
           scrolled ? "bg-ink/90 backdrop-blur-md shadow-sm border-b border-divider-dark" : "bg-transparent",
@@ -127,10 +127,10 @@ export default function Header() {
         )}
       >
         <div className="site-header-inner relative flex items-center justify-between">
-          
+
           {/* Left: Brand */}
-          <Link 
-            to="/" 
+          <Link
+            to="/"
             className="header-name hover:text-warm-white transition-colors shrink-0 z-10"
             style={{ color: 'var(--warm-white)', textShadow: '0 2px 10px rgba(0, 0, 0, 0.65)' }}
             onClick={() => setIsMobileMenuOpen(false)}
@@ -139,7 +139,7 @@ export default function Header() {
           </Link>
 
           {/* Center: Secondary Nav (Desktop & Tablet) */}
-          <nav 
+          <nav
             className={cn(
               "desktop-nav items-center gap-6 absolute left-1/2 -translate-x-1/2 transition-all duration-300",
               scrolled ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"
@@ -152,48 +152,49 @@ export default function Header() {
           </nav>
 
           {/* Right: Social, Email, CTA & Hamburger */}
-          <div className="flex items-center gap-2 sm:gap-4 md:gap-[16px] min-[1100px]:gap-6 z-10 shrink-0">
+          <div className="header-actions flex items-center gap-2 sm:gap-4 md:gap-[16px] min-[1100px]:gap-6 z-10 shrink-0">
             {/* Desktop / Tablet Links */}
-            <div className="hidden md:flex items-center gap-3 px-[16px] py-[10px] rounded-full bg-ink/35 backdrop-blur-[10px] border border-white/20 shadow-[0_2px_10px_rgba(0,0,0,0.25)]">
-              <a href="https://www.linkedin.com/in/sampathputrevu/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink rounded" aria-label="LinkedIn">
+            <div className="hidden md:flex items-center gap-[12px] min-[1100px]:gap-3">
+              <a href="https://www.linkedin.com/in/sampathputrevu/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="LinkedIn">
                 <div className="w-[23.24px] h-[23.24px] bg-current shrink-0" style={{ maskImage: `url(${linkedinIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${linkedinIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
               </a>
-              <a href="mailto:sampathptrvu@gmail.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink rounded" aria-label="Email">
+              <a href="mailto:sampathptrvu@gmail.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="Email">
                 <Mail className="w-[23.24px] h-[23.24px] shrink-0" />
               </a>
-              <a href="https://wa.me/919989546250" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink rounded" aria-label="WhatsApp">
+              <a href="https://wa.me/919989546250" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="WhatsApp">
                 <div className="w-[23.24px] h-[23.24px] bg-current shrink-0" style={{ maskImage: `url(${whatsappIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${whatsappIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
               </a>
             </div>
 
             {/* Permanent CTA (Desktop, Tablet, Mobile) */}
-            <a 
+            <a
               href="https://cal.com/sampath-putrevu-z6jq0i"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-[36px] px-3 sm:h-[40px] sm:px-5 rounded-[4px] type-button transition-all shadow-sm bg-burgundy text-warm-white hover:bg-burgundy-dark hover:-translate-y-[1px] focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink cursor-pointer"
+              className="header-book-call inline-flex items-center justify-center h-[36px] px-3 sm:h-[40px] sm:px-5 rounded-[4px] type-button transition-all shadow-sm bg-burgundy text-warm-white hover:bg-burgundy-dark hover:-translate-y-[1px] focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink cursor-pointer"
             >
               Book a call
             </a>
 
             {/* Hamburger Menu Toggle (Mobile only, or Tablet if needed) */}
-            <button 
+            {/* But prompt says: "Keep LinkedIn, Email, and all five navigation links inside the hamburger menu" on mobile. */}
+            <button
               ref={hamburgerRef}
               onClick={() => setIsMobileMenuOpen(true)}
-              className="min-[1100px]:hidden menu-toggle flex flex-col items-center justify-center gap-[5px] shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-transparent rounded-[8px] bg-ink/35 backdrop-blur-[10px] border border-white/20 shadow-[0_2px_10px_rgba(0,0,0,0.25)] hover:bg-ink/50 transition-colors"
+              className="min-[1100px]:hidden menu-toggle flex flex-col justify-center gap-[6px] shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-transparent rounded-[4px]"
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
               aria-label="Open menu"
-              style={{ width: '40px', height: '40px' }}
+              style={{ width: '40px', height: '40px', alignItems: 'flex-end', justifyContent: 'center' }}
             >
-              <span className="rounded-full h-[2px] w-[20px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.4)' }}></span>
-              <span className="rounded-full h-[2px] w-[20px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.4)' }}></span>
-              <span className="rounded-full h-[2px] w-[20px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 3px rgba(0, 0, 0, 0.4)' }}></span>
+              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
+              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
+              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
             </button>
           </div>
         </div>
           {/* Tablet Second Row (scrolled only) */}
-          <div 
+          <div
             className={cn(
               "tablet-nav justify-center items-center pt-3 pb-1",
               scrolled ? "scrolled" : ""
@@ -210,7 +211,7 @@ export default function Header() {
 
       {/* Menu Overlay Scrim */}
       {isMobileMenuOpen && (
-        <div 
+        <div
           className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm transition-opacity"
           onClick={() => setIsMobileMenuOpen(false)}
           aria-hidden="true"
@@ -219,22 +220,22 @@ export default function Header() {
 
       {/* Mobile Menu Drawer */}
       {isMobileMenuOpen && (
-        <div 
-          id="mobile-menu" 
+        <div
+          id="mobile-menu"
           className="fixed inset-y-0 right-0 z-[70] flex flex-col bg-ink border-l border-divider-dark w-full sm:w-[min(460px,100vw)] shadow-2xl overflow-y-auto"
           role="dialog"
           aria-modal="true"
         >
           {/* Menu Header */}
           <div className="flex items-center justify-between px-[var(--page-gutter)] py-[20px] md:py-[24px] shrink-0">
-            <Link 
-              to="/" 
+            <Link
+              to="/"
               className="header-name text-warm-white transition-colors shrink-0"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Sampath Putrevu
             </Link>
-            <button 
+            <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="flex items-center justify-end shrink-0 transition-colors text-warm-white hover:text-warm-white focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[4px]"
               aria-label="Close menu"
@@ -249,9 +250,9 @@ export default function Header() {
               <a href="/#expertise" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-warm-white transition-colors">How I help</a>
               <a href="/#why-me" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-warm-white transition-colors">Why me</a>
               <a href="/#fit" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-warm-white transition-colors">Best fit</a>
-              <Link 
-                to="/work" 
-                onClick={() => setIsMobileMenuOpen(false)} 
+              <Link
+                to="/work"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className={cn(
                   "hover:text-warm-white transition-colors",
                   isWorkPage ? "text-burgundy" : ""
@@ -260,9 +261,9 @@ export default function Header() {
                 Past work
               </Link>
             </div>
-            
+
             <div className="w-full h-px bg-white/10 my-8 sm:my-10"></div>
-            
+
             <div className="flex flex-col gap-6 sm:gap-8">
               <div className="flex items-center gap-4">
                 <a href="https://www.linkedin.com/in/sampathputrevu/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-3 -m-3" aria-label="LinkedIn">
@@ -275,7 +276,7 @@ export default function Header() {
                   <div className="w-[28px] h-[28px] bg-current shrink-0" style={{ maskImage: `url(${whatsappIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${whatsappIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
                 </a>
               </div>
-              <a 
+              <a
                 href="https://cal.com/sampath-putrevu-z6jq0i"
                 target="_blank"
                 rel="noopener noreferrer"

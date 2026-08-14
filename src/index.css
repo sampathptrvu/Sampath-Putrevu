@@ -61,35 +61,35 @@ html, body, button, input, textarea, select {
   /* Typography Tokens */
   --type-display-font: "Plus Jakarta Sans", sans-serif;
   --type-sans-font: "Plus Jakarta Sans", sans-serif;
-  
+
   --type-hero-eyebrow-size: 23px;
   --type-hero-h1-size: 34px;
   --type-hero-desc-size: 17px;
-  
+
   --type-section-label-size: 28px;
-  
+
   /* Primary H3 like "One narrative. The full range." */
   --type-h3-size-mobile: 24px;
   --type-h3-size-desktop: 28px;
-  
+
   /* H3 Burgandy like "Who should hire me?" */
   --type-h3-alt-size-mobile: 24px;
   --type-h3-alt-size-desktop: 30px;
-  
+
   /* Card Heading like "Extract", "Frame" */
   --type-card-h3-size: 20px;
-  
+
   /* Card Subheading like "Brand and founder positioning" */
   --type-card-h4-size-mobile: 18px;
   --type-card-h4-size-desktop: 20px;
-  
+
   /* Fit criteria heading */
   --type-fit-h4-size-mobile: 20px;
   --type-fit-h4-size-desktop: 22px;
-  
+
   --type-body-size-mobile: 16px;
   --type-body-size-desktop: 17px;
-  
+
   /* CTA */
   --type-cta-h2-size: 25px;
   --type-cta-p-size: 24px;
@@ -191,8 +191,9 @@ html {
 
 
 body {
-  
-  
+  background-color: #101410;
+
+
 
   color: var(--text-on-dark);
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -210,39 +211,45 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 }
 
 @media (max-width: 767px) {
-  
-  
-  
+
+
+
 }
 
 
 
 
 @media (max-width: 1199px) {
-  
-  
+
+
 }
 @media (max-width: 767px) {
-  
-  
-  
+
+
+
 }
 .credibility-inner {
   color: #252724;
   box-sizing: border-box;
   background: #ffffff;
   border-radius: 18px;
-  width: 100%;
+
+
+
+  width: fit-content;
   max-width: 100%;
   margin: 0 auto;
+
+  display: flex;
+
 }
 
 @media (max-width: 767px) {
   .credibility-inner {
-    
-    
+
+
   }
-  
+
   }
 .home-section {
   box-sizing: border-box;
@@ -261,11 +268,11 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   position: relative;
 }
 @media (max-width: 800px) {
-  
+
 
   .credibility-inner {
-    
-    
+
+
   }
 }
 
@@ -287,7 +294,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
 
 @media (max-width: 1200px) {
-  
+
 }
 
 .glass-surface {
@@ -303,7 +310,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
 
 @media (max-width: 900px) {
-  
+
 }
 
 
@@ -358,7 +365,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 @layer components {
 
   /* Site-wide Typography Classes from HomePage Source of Truth */
-  
+
   .type-hero-eyebrow {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: var(--type-hero-eyebrow-size);
@@ -442,7 +449,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
       font-size: var(--type-card-h4-size-desktop);
     }
   }
-  
+
   .type-card-heading-3 {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: var(--type-fit-h4-size-mobile);
@@ -483,7 +490,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
       font-size: var(--type-body-size-desktop);
     }
   }
-  
+
   .type-body-bold {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: var(--type-body-size-mobile);
@@ -536,7 +543,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
     font-size: var(--type-btn-size);
     font-weight: bold;
   }
-  
+
   .type-label-small {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 14px;
@@ -546,7 +553,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
 
   /* Site-wide Typography Classes from HomePage Source of Truth */
-  
+
   .type-hero-eyebrow {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: var(--type-hero-eyebrow-size);
@@ -630,7 +637,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
       font-size: var(--type-card-h4-size-desktop);
     }
   }
-  
+
   .type-card-heading-3 {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: var(--type-fit-h4-size-mobile);
@@ -671,7 +678,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
       font-size: var(--type-body-size-desktop);
     }
   }
-  
+
   .type-body-bold {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: var(--type-body-size-mobile);
@@ -724,7 +731,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
     font-size: var(--type-btn-size);
     font-weight: bold;
   }
-  
+
   .type-label-small {
     font-family: "Plus Jakarta Sans", sans-serif;
     font-size: 14px;
@@ -732,10 +739,10 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
     color: var(--color-panel-muted);
   }
 
-  
-  
-  
-  
+
+
+
+
 }
 
 /* HEADER */
@@ -797,8 +804,18 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   .header-name { font-size: 20px; }
 }
 @media (max-width: 380px) {
-  .site-header-inner { padding: 12px 16px; }
-  .header-name { font-size: 19px; }
+  .site-header-inner { padding: 12px 12px; }
+  .header-name { font-size: 17px; }
+  .header-actions { gap: 4px; }
+  .header-book-call {
+    height: 32px;
+    padding-inline: 8px;
+    font-size: 12px;
+  }
+  .menu-toggle {
+    width: 32px !important;
+    height: 32px !important;
+  }
 }
 
 /* Hero Panel Layout */
@@ -809,14 +826,14 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
 
 @media (max-width: 1199px) {
-  
-  
+
+
 }
 
 @media (max-width: 767px) {
-  
-  
-  
+
+
+
 }
 
 /* Typography fix for Hero */
@@ -827,9 +844,9 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
 
 @media (max-width: 767px) {
-  
-  
-  
+
+
+
 }
 
 
@@ -840,7 +857,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   width: 100%;
   display: flex;
   align-items: center;
-  
+
   padding-left: 148px;
   padding-right: 48px;
   box-sizing: border-box;
@@ -905,7 +922,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   position: static;
   display: flex;
   align-items: center;
-  
+
   gap: 16px;
   margin-top: 30px;
   transform: none;
@@ -969,6 +986,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 }
 
 
+.credibility-row,
 .section-row {
   display: grid;
   grid-template-columns: var(--section-label-width) minmax(0, 1fr);
@@ -980,10 +998,20 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   align-items: start;
 }
 
+.credibility-strip {
+  grid-column: 2;
+  width: 100%;
+}
+
+
 @media (max-width: 1024px) {
+  .credibility-row,
   .section-row {
     grid-template-columns: 1fr;
     gap: 16px;
+  }
+  .credibility-strip {
+    grid-column: 1;
   }
 }
 
@@ -1114,7 +1142,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   border-radius: 26px;
   box-shadow: 0 20px 60px rgba(8, 12, 9, 0.16);
   box-sizing: border-box;
-  
+
 }
 
 .work-list-heading {
@@ -1366,37 +1394,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   inset: 0;
   width: 100%;
   height: 100dvh;
-  
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: brightness(1.12) contrast(1.03) saturate(0.96) hue-rotate(3deg);
-  z-index: -2;
-  pointer-events: none;
-}
 
-@media (min-width: 1100px) {
-  .site-background-image {
-    background-position: center center;
-  }
-}
-@media (min-width: 768px) and (max-width: 1099px) {
-  .site-background-image {
-    background-position: 50% center;
-  }
-}
-@media (max-width: 767px) {
-  .site-background-image {
-    background-position: 46% center;
-  }
-}
-
-/* Shared Site Background */
-.site-background-image {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100dvh;
-  background-image: url("./homepage-background.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   filter: brightness(1.12) contrast(1.03) saturate(0.96) hue-rotate(3deg);

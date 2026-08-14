@@ -8,7 +8,8 @@ import { Link } from 'react-router-dom';
 import Header from './Header';
 import ByTheNumbersSection from './ByTheNumbersSection';
 import { motion, useScroll, useTransform } from 'motion/react';
-import { Mail, ScanSearch, Crop, Send } from 'lucide-react';
+import { Mail, ScanSearch, Crop, Send, ExternalLink, ArrowRight } from 'lucide-react';
+import { journalismStories } from './data/journalismData';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import linkedinIcon from './linkedin-icon.png';
@@ -48,11 +49,11 @@ function FadePanel({ children, className, variants, initial, whileInView, animat
   });
   const bgOpacity = useTransform(scrollYProgress, [0, 0.4, 0.5, 0.6, 1], [1, 1, 1, 1, 1]);
   const backgroundColor = useTransform(bgOpacity, (alpha) => `rgba(255, 250, 242, 0.96)`);
-  
+
   return (
-    <motion.div 
-      ref={ref} 
-      className={className}
+    <motion.div
+      ref={ref}
+      className={cn("relative", className)}
       variants={variants}
       initial={initial}
       whileInView={whileInView}
@@ -79,15 +80,15 @@ export default function HomePage() {
     ogType: "website"
   });
 
-  
+
 
   return (
     <div className="min-h-screen selection:bg-burgundy selection:text-warm-white font-sans text-warm-white">
       <Header />
-      
+
       <main className="homepage-content-stack pb-12">
-        
-        
+
+
         {/* Hero Section */}
         <section className="hero-panel-stage">
           <motion.div
@@ -105,9 +106,9 @@ export default function HomePage() {
                 <p className="type-hero-description mb-[32px]" style={{ textShadow: "0 2px 8px rgba(0, 0, 0, 0.38)" }}>
                   I find the idea only your company can own, and give it language the market can repeat.
                 </p>
-                
+
                 <div className="hero-actions">
-                  <a 
+                  <a
                     href="https://cal.com/sampath-putrevu-z6jq0i"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -115,7 +116,7 @@ export default function HomePage() {
                   >
                     Book a call
                   </a>
-                  <Link 
+                  <Link
                     to="/work"
                     className="w-full md:w-auto text-center inline-flex items-center justify-center px-5 md:px-[22px] py-[11px] bg-white/10 backdrop-blur-sm border border-white/20 text-warm-white rounded-[4px] type-button hover:bg-white/15 transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent cursor-pointer shadow-sm"
                   >
@@ -125,24 +126,24 @@ export default function HomePage() {
             </motion.div>
         </section>
 
-        
+
         {/* Credibility Section */}
-        <section className="w-full max-w-[var(--page-max-width)] mx-auto px-[var(--page-gutter)] my-8 sm:my-10">
-          <div className="bg-white rounded-[18px] py-6 px-6 sm:px-8 lg:px-10 border border-divider-light shadow-sm grid grid-cols-2 lg:grid-cols-[max-content_max-content_max-content_max-content_max-content] lg:justify-center items-center gap-y-4 gap-x-6 lg:gap-x-6 xl:gap-x-10 w-full">
-            <div className="col-span-2 lg:col-span-1 font-medium text-[15px] sm:text-[16px] lg:text-[17px] text-center lg:text-left leading-snug text-[#252724] tracking-tight whitespace-normal lg:whitespace-nowrap">
+        <section className="credibility-row">
+          <div className="credibility-strip credibility-inner flex flex-wrap min-[1100px]:grid min-[1100px]:grid-cols-[max-content_max-content_max-content_max-content_max-content] min-[1100px]:justify-center min-[1100px]:items-center justify-center items-center gap-y-4 gap-x-6 min-[1100px]:gap-x-[32px] min-[1100px]:gap-y-0 py-5 md:py-4 min-[1100px]:py-[24px] px-4 md:px-6 min-[1100px]:px-[40px]">
+            <p className="w-full min-[1100px]:w-auto font-medium text-[18px] text-center leading-snug text-[#252724] whitespace-normal md:whitespace-nowrap">
               Trusted by founders and teams backed by
-            </div>
-            <a href="https://www.accel.com/" target="_blank" rel="noopener noreferrer" aria-label="Accel" className="col-span-1 flex items-center justify-center min-w-0 w-full lg:w-auto h-8">
-              <img src={accelLogo} alt="Accel" className="max-h-6 sm:max-h-7 max-w-[155px] lg:max-w-[170px] w-auto h-auto object-contain hover:opacity-80 transition-opacity" />
+            </p>
+            <a href="https://www.accel.com/" target="_blank" rel="noopener noreferrer" aria-label="Accel" className="flex items-center justify-center min-w-0 w-auto">
+              <img src={accelLogo} alt="" className="h-[24px] md:h-[26px] min-[1100px]:h-[22px] w-auto object-contain block" />
             </a>
-            <a href="https://www.bvp.com/" target="_blank" rel="noopener noreferrer" aria-label="Bessemer Venture Partners" className="col-span-1 flex items-center justify-center min-w-0 w-full lg:w-auto h-8">
-              <img src={bessemerLogo} alt="Bessemer Venture Partners" className="h-6 sm:h-7 max-w-[125px] lg:max-w-[140px] w-auto object-contain hover:opacity-80 transition-opacity" />
+            <a href="https://www.bvp.com/" target="_blank" rel="noopener noreferrer" aria-label="Bessemer" className="flex items-center justify-center min-w-0 w-auto">
+              <img src={bessemerLogo} alt="" className="h-[20px] md:h-[22px] min-[1100px]:h-[18px] w-auto object-contain block" />
             </a>
-            <a href="https://www.redpoint.com/" target="_blank" rel="noopener noreferrer" aria-label="Redpoint Ventures" className="col-span-1 flex items-center justify-center min-w-0 w-full lg:w-auto h-8">
-              <img src={redpointLogo} alt="Redpoint Ventures" className="max-h-5 sm:max-h-6 max-w-[135px] lg:max-w-[155px] w-auto h-auto object-contain hover:opacity-80 transition-opacity" />
+            <a href="https://www.redpoint.com/" target="_blank" rel="noopener noreferrer" aria-label="Redpoint" className="flex items-center justify-center min-w-0 w-auto">
+              <img src={redpointLogo} alt="" className="h-[28px] md:h-[30px] min-[1100px]:h-[24px] w-auto object-contain block" />
             </a>
-            <a href="https://www.sequoiacap.com/" target="_blank" rel="noopener noreferrer" aria-label="Sequoia Capital" className="col-span-1 flex items-center justify-center min-w-0 w-full lg:w-auto h-8">
-              <img src={sequoiaLogo} alt="Sequoia Capital" className="max-h-5 sm:max-h-6 max-w-[150px] lg:max-w-[175px] w-auto h-auto object-contain hover:opacity-80 transition-opacity" />
+            <a href="https://www.sequoiacap.com/" target="_blank" rel="noopener noreferrer" aria-label="Sequoia" className="flex items-center justify-center min-w-0 w-auto">
+              <img src={sequoiaLogo} alt="" className="h-[16px] md:h-[18px] min-[1100px]:h-[15px] w-auto object-contain block" />
             </a>
           </div>
         </section>
@@ -162,10 +163,10 @@ export default function HomePage() {
               <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
             </div>
           </div>
-          
+
           <FadePanel className={panelClass}>
             <div className="flex flex-col min-[900px]:grid min-[900px]:grid-cols-3 gap-0 min-[900px]:gap-8">
-                
+
                 {/* 01 */}
                 <div className="flex flex-col pb-6 min-[900px]:pb-0 border-b border-divider-light min-[900px]:border-b-0 min-[900px]:border-r min-[900px]:pr-8 group hover:-translate-y-1 transition-transform duration-300 ease-out">
                   <div className="flex items-center gap-3 mb-4">
@@ -222,7 +223,7 @@ export default function HomePage() {
                 <h3 className="type-section-heading mb-8 text-balance !text-[32px] !font-normal">
                   One narrative. The full range.
                 </h3>
-                
+
                 <div className="flex flex-col md:grid md:grid-cols-2 gap-y-8 md:gap-y-10 md:gap-x-12">
                   {/* Block 1 */}
                   <div className="flex flex-col pb-8 md:pb-0 border-b border-divider-light md:border-b-0 md:border-r md:pr-12 group">
@@ -352,11 +353,11 @@ export default function HomePage() {
               <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
             </div>
           </div>
-          
+
           <FadePanel className={panelClass}>
-            <div className="flex flex-col gap-8 md:gap-10">
-              <div className="flex flex-col min-[768px]:grid min-[768px]:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)] gap-[clamp(32px,4vw,52px)] items-start">
-                <div className="flex flex-col gap-5 text-lg font-normal leading-relaxed text-panel-body w-full max-w-[58ch] min-w-0">
+            <div className="flex flex-col gap-[24px]">
+              <div className="flex flex-col min-[768px]:grid min-[768px]:grid-cols-[minmax(0,1.15fr)_minmax(280px,0.85fr)] gap-[32px] min-[768px]:gap-[clamp(32px,4vw,52px)] items-start">
+                <div className="flex flex-col gap-[20px] text-lg font-normal leading-relaxed text-panel-body w-full max-w-[58ch] min-w-0">
                   <p>
                     Many technical companies do not have a marketing problem. They have a language problem.
                   </p>
@@ -374,13 +375,13 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="w-full max-w-[420px] mx-auto min-[768px]:max-w-[360px] min-[768px]:justify-self-end min-[768px]:self-start">
-                  <img 
-                    src={portraitImg} 
+                  <img
+                    src={portraitImg}
                     alt="Illustrated portrait of Sampath Putrevu" loading="lazy" width="800" height="800" className="w-full h-auto aspect-auto object-contain object-top rounded-[12px] shadow-sm grayscale opacity-90 p-[10px] bg-transparent"
                   />
                 </div>
               </div>
-              <div className="flex flex-col gap-5 text-lg font-normal leading-relaxed text-panel-body w-full min-w-0">
+              <div className="flex flex-col gap-[20px] text-lg font-normal leading-relaxed text-panel-body w-full min-w-0">
                 <p>
                   At <a href="https://www.zenskar.com/" target="_blank" rel="noopener noreferrer" className="hover:underline focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[2px] transition-colors">Zenskar</a>, the work began with language, for a product buyers could not yet describe. Distribution came after the positioning was clear enough to build on.
                 </p>
@@ -400,6 +401,61 @@ export default function HomePage() {
         </section>
 
 
+
+        {/* Selected reporting */}
+        <section id="selected-reporting" className="home-section scroll-mt-[100px]">
+          <div className="section-row">
+          <div className="section-label-container">
+            <div className="section-label-panel">
+              <h2 className="type-section-label">Selected reporting</h2>
+              <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
+            </div>
+          </div>
+
+          <FadePanel className={panelClass}>
+            <div className="flex flex-col gap-8 md:gap-10">
+              <div className="flex flex-col gap-6 text-lg font-normal leading-relaxed text-panel-body max-w-[65ch]">
+                <p>
+                  Before I worked inside startups, I spent four years reporting on how technical companies were built. That work taught me to find the idea beneath the product and give it a form other people can understand.
+                </p>
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[15px] font-medium text-panel-muted pt-2 border-t border-divider-dark/10">
+                  <span>4 years at YourStory</span>
+                  <span className="w-1 h-1 rounded-full bg-divider-dark opacity-30"></span>
+                  <span>406 published stories</span>
+                  <span className="w-1 h-1 rounded-full bg-divider-dark opacity-30"></span>
+                  <span>350+ interviews</span>
+                </div>
+              </div>
+
+              <div className="flex flex-col xl:grid xl:grid-cols-3 gap-0 xl:gap-8">
+                {journalismStories.filter(s => ['postman', 'hubspot', 'google-maps-india'].includes(s.slug)).map((story, idx, arr) => (
+                  <div key={story.slug} className={`flex flex-col pb-8 xl:pb-0 ${idx !== arr.length - 1 ? 'border-b border-divider-dark/10 mb-8 xl:mb-0 xl:border-b-0 xl:border-r xl:border-divider-dark/10 xl:pr-8' : ''} group hover:-translate-y-1 transition-transform duration-300 ease-out`}>
+                    <span className="type-label-small mb-4 block text-panel-muted">{story.label}</span>
+                    <h3 className="type-card-heading-1 mb-3 text-panel-heading">{story.headline}</h3>
+                    <p className="mb-4 text-panel-body text-[17px] leading-[1.7]">{story.description}</p>
+                    <p className="mb-6 text-sm flex-grow text-panel-muted">{story.metadata}</p>
+                    <div className="flex flex-col items-start gap-3 mt-auto">
+                      <Link to={`/journalism/${story.slug}`} className="type-button-ghost inline-flex items-center text-burgundy font-medium hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-burgundy rounded-sm">
+                        View story <ArrowRight className="w-4 h-4 ml-1" />
+                      </Link>
+                      <a href={story.originalUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-panel-muted text-sm font-medium hover:text-burgundy transition-colors focus:outline-none focus:ring-2 focus:ring-burgundy rounded-sm text-left">
+                        Read the original article <ExternalLink className="w-[14px] h-[14px] ml-1" />
+                      </a>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="pt-2 border-t border-divider-dark/10">
+                <Link to="/journalism" className="inline-flex items-center text-[17px] font-semibold text-burgundy hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-burgundy focus:ring-offset-2 focus:ring-offset-parchment rounded-[2px] mt-2">
+                  View all five selected stories <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+          </FadePanel>
+          </div>
+        </section>
+
         {/* Best Fit */}
         <section id="fit" className="home-section scroll-mt-[100px]">
           <div className="section-row">
@@ -409,7 +465,7 @@ export default function HomePage() {
               <div className="section-label-rule w-12 h-px mt-4 md:mt-5" style={{ background: "var(--burgundy)" }}></div>
             </div>
           </div>
-          
+
           <FadePanel className={panelClass}>
             <h3 className="type-section-heading-burgundy mb-6 md:mb-[30px] text-balance !font-normal !text-[34px]">Who should hire me?</h3>
             <div className="flex flex-col">
@@ -420,7 +476,7 @@ export default function HomePage() {
                 </div>
               ))}
             </div>
-            
+
             <div className="pt-[26px] md:pt-[30px] mt-[26px] md:mt-[30px] border-t border-divider-light">
               <h4 className="type-card-heading-3 mb-3 text-balance !text-[34px] !font-normal">Not the right fit</h4>
               <div className="type-body-muted space-y-2 max-w-[72ch] text-pretty">
@@ -434,13 +490,13 @@ export default function HomePage() {
           </div>
         </section>
 
-        
+
             {/* Final CTA */}
       <section className="footer-cta">
         <div className="footer-cta-inner">
           <p className="type-cta-body mb-[29px]">If your product is ahead of its language, that's where we start.</p>
           <div className="flex justify-center items-center">
-            <a 
+            <a
               href="https://cal.com/sampath-putrevu-z6jq0i"
               target="_blank"
               rel="noopener noreferrer"
@@ -449,17 +505,17 @@ export default function HomePage() {
               Book a call
             </a>
           </div>
-          
+
           <div className="social-links flex justify-center items-center gap-8">
-            <a 
-              href="https://www.linkedin.com/in/sampathputrevu/" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.linkedin.com/in/sampathputrevu/"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white/90 hover:text-white transition-colors flex items-center p-3 -m-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded-sm"
               aria-label="LinkedIn"
             >
-              <div 
-                className="w-[28px] h-[28px] bg-current" 
+              <div
+                className="w-[28px] h-[28px] bg-current"
                 style={{
                   maskImage: `url(${linkedinIcon})`,
                   maskSize: 'contain',
@@ -472,24 +528,24 @@ export default function HomePage() {
                 }}
               />
             </a>
-            <a 
-              href="mailto:sampathptrvu@gmail.com" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="mailto:sampathptrvu@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white/90 hover:text-white transition-colors flex items-center p-3 -m-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded-sm"
               aria-label="Email"
             >
               <Mail className="w-[28px] h-[28px]" />
             </a>
-            <a 
-              href="https://wa.me/919989546250" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://wa.me/919989546250"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-white/90 hover:text-white transition-colors flex items-center p-3 -m-3 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-transparent rounded-sm"
               aria-label="WhatsApp"
             >
-              <div 
-                className="w-[28px] h-[28px] bg-current" 
+              <div
+                className="w-[28px] h-[28px] bg-current"
                 style={{
                   maskImage: `url(${whatsappIcon})`,
                   maskSize: 'contain',

@@ -11,33 +11,13 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sampathputrevu.com/journalism</loc>
+    <loc>https://sampathputrevu.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://sampathputrevu.com/journalism/postman</loc>
+    <loc>https://sampathputrevu.com/published</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sampathputrevu.com/journalism/hubspot</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sampathputrevu.com/journalism/observe-ai</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sampathputrevu.com/journalism/google-maps-india</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://sampathputrevu.com/journalism/razorpay</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.8</priority>
   </url>
 </urlset>

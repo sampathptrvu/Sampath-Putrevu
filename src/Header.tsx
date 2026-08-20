@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { X, Mail } from 'lucide-react';
+import { X, Mail, Menu } from 'lucide-react';
 import { cn } from './lib/utils';
 import linkedinIcon from './linkedin-icon.png';
 import whatsappIcon from './whatsapp-icon.png';
@@ -19,7 +19,7 @@ export default function Header() {
         setActiveSection('');
         return;
       }
-      const sections = ['expertise', 'why-me', 'fit'];
+      const sections = ['expertise', 'fit'];
       let current = '';
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -32,6 +32,7 @@ export default function Header() {
       }
       setActiveSection(current);
     };
+
     window.addEventListener('scroll', handleScrollSpy, { passive: true });
     handleScrollSpy();
     return () => window.removeEventListener('scroll', handleScrollSpy);
@@ -53,7 +54,7 @@ export default function Header() {
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   // Prevent background scroll when menu is open
   useEffect(() => {
@@ -95,9 +96,11 @@ export default function Header() {
       if (e.key === 'Tab') {
         const menu = document.getElementById('mobile-menu');
         if (!menu) return;
+        
         const focusableElements = menu.querySelectorAll('a[href], button, input, textarea, select, details, [tabindex]:not([tabindex="-1"])');
         const firstElement = focusableElements[0] as HTMLElement;
         const lastElement = focusableElements[focusableElements.length - 1] as HTMLElement;
+        
         if (e.shiftKey) {
           if (document.activeElement === firstElement) {
             lastElement.focus();
@@ -111,6 +114,7 @@ export default function Header() {
         }
       }
     };
+
     if (isMobileMenuOpen) window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isMobileMenuOpen]);
@@ -121,48 +125,64 @@ export default function Header() {
       <div 
         className={cn(
           "w-full z-50 pointer-events-auto transition-colors duration-200",
-          scrolled ? "bg-ink/90 backdrop-blur-md shadow-sm border-b border-divider-dark" : "bg-transparent",
-          // Use !fixed to override .site-header's absolute positioning
-          "!fixed top-0 left-0"
+          scrolled ? "bg-[var(--color-page)] border-b border-[var(--color-rule)]" : "bg-transparent border-transparent",
+          "sticky top-0 left-0"
         )}
       >
-        <div className="site-header-inner relative flex items-center justify-between">
+        <div className="site-header-inner relative flex items-center justify-between py-7 px-4 md:px-12 lg:px-24 mx-auto max-w-[1440px] box-border">
           
           {/* Left: Brand */}
           <Link 
             to="/" 
-            className="header-name hover:text-warm-white transition-colors shrink-0 z-10"
-            style={{ color: 'var(--warm-white)', textShadow: '0 2px 10px rgba(0, 0, 0, 0.65)' }}
+            className="type-wordmark font-['Cabin'] hover:text-[var(--color-accent)] transition-colors shrink-0 z-10"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             Sampath Putrevu
           </Link>
 
           {/* Center: Secondary Nav (Desktop & Tablet) */}
+          <div className="flex items-center gap-8 z-10 shrink-0">
           <nav 
-            className={cn(
-              "desktop-nav items-center gap-6 absolute left-1/2 -translate-x-1/2 transition-all duration-300",
-              scrolled ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-2 pointer-events-none"
-            )}
+            className="hidden min-[1100px]:flex font-['Cabin'] text-[18px] items-center gap-8 transition-all duration-300 pointer-events-auto"
           >
-            <a href="/#expertise" className={cn("type-nav transition-colors text-[18px]", activeSection === "expertise" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")} style={{ fontSize: '18px' }}>How I help</a>
-            <a href="/#why-me" className={cn("type-nav transition-colors text-[18px]", activeSection === "why-me" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")} style={{ fontSize: '18px' }}>Why me</a>
-            <a href="/#fit" className={cn("type-nav transition-colors text-[18px]", activeSection === "fit" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")} style={{ fontSize: '18px' }}>Best fit</a>
-            <Link to="/work" className={cn("type-nav transition-colors text-[18px]", isWorkPage ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")} style={{ fontSize: '18px' }}>Past work</Link>
+            <Link to="/about" className={cn("type-nav-link whitespace-nowrap")}>About</Link>
+            <Link to="/how-i-help" className={cn("type-nav-link whitespace-nowrap")}>How I help</Link>
+            <Link to="/work" className={cn("type-nav-link whitespace-nowrap", isWorkPage ? "text-[var(--color-text)]" : "")}>Past work</Link>
+            <Link to="/published" className={cn("type-nav-link whitespace-nowrap")}>Published</Link>
+            <Link to="/contact" className={cn("type-nav-link whitespace-nowrap", location.pathname === "/contact" ? "text-[var(--color-text)]" : "")}>Work with me &rarr;</Link>
           </nav>
 
-          {/* Right: Social, Email, CTA & Hamburger */}
-          <div className="flex items-center gap-2 sm:gap-4 md:gap-[16px] min-[1100px]:gap-6 z-10 shrink-0">
-            {/* Desktop / Tablet Links */}
-            <div className="hidden md:flex items-center gap-[12px] min-[1100px]:gap-3">
-              <a href="https://www.linkedin.com/in/sampathputrevu/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="LinkedIn">
-                <div className="w-[23.24px] h-[23.24px] bg-current shrink-0" style={{ maskImage: `url(${linkedinIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${linkedinIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
+          {/* Right: Social & CTA */}
+          <div className="flex items-center gap-3 sm:gap-6 ">
+            {/* Social Icons (Desktop only) */}
+            <div className="hidden min-[1100px]:flex items-center gap-4 mr-2">
+              <a 
+                href="https://www.linkedin.com/in/sampathputrevu/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors flex items-center p-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-text)] focus:ring-offset-2 focus:ring-offset-[var(--color-page)] rounded-sm"
+                aria-label="LinkedIn"
+              >
+                <div 
+                  className="w-[20px] h-[20px] bg-current" 
+                  style={{
+                    maskImage: `url(${linkedinIcon})`,
+                    maskSize: 'contain',
+                    maskRepeat: 'no-repeat',
+                    maskPosition: 'center',
+                    WebkitMaskImage: `url(${linkedinIcon})`,
+                    WebkitMaskSize: 'contain',
+                    WebkitMaskRepeat: 'no-repeat',
+                    WebkitMaskPosition: 'center'
+                  }}
+                />
               </a>
-              <a href="mailto:sampathptrvu@gmail.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="Email">
-                <Mail className="w-[23.24px] h-[23.24px] shrink-0" />
-              </a>
-              <a href="https://wa.me/919989546250" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-2 -m-2" aria-label="WhatsApp">
-                <div className="w-[23.24px] h-[23.24px] bg-current shrink-0" style={{ maskImage: `url(${whatsappIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${whatsappIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
+              <a 
+                href="mailto:sampathptrvu@gmail.com" 
+                className="text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors flex items-center p-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-text)] focus:ring-offset-2 focus:ring-offset-[var(--color-page)] rounded-sm"
+                aria-label="Email"
+              >
+                <Mail className="w-[20px] h-[20px]" />
               </a>
             </div>
 
@@ -171,48 +191,33 @@ export default function Header() {
               href="https://cal.com/sampath-putrevu-z6jq0i"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center h-[36px] px-3 sm:h-[40px] sm:px-5 rounded-[4px] type-button transition-all shadow-sm bg-burgundy text-warm-white hover:bg-burgundy-dark hover:-translate-y-[1px] focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink cursor-pointer"
+              className="inline-flex items-center justify-center h-[44px] px-5 rounded-none type-button font-['Cabin'] transition-all bg-[var(--color-text)] text-[var(--color-page)] hover:bg-[var(--color-accent)] hover:-translate-y-[1px] focus:outline-none focus:ring-2 focus:ring-[var(--color-text)] focus:ring-offset-2 focus:ring-offset-[var(--color-page)] cursor-pointer"
             >
               Book a call
             </a>
 
-            {/* Hamburger Menu Toggle (Mobile only, or Tablet if needed) */}
-            {/* But prompt says: "Keep LinkedIn, Email, and all five navigation links inside the hamburger menu" on mobile. */}
             <button 
               ref={hamburgerRef}
               onClick={() => setIsMobileMenuOpen(true)}
-              className="min-[1100px]:hidden menu-toggle flex flex-col justify-center gap-[6px] shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-transparent rounded-[4px]"
+              className="min-[1100px]:hidden flex flex-col items-center justify-center gap-[6px] shrink-0 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[var(--color-text)] focus:ring-offset-2 focus:ring-offset-[var(--color-page)] rounded-none bg-[var(--color-page)] border border-[var(--color-rule)]"
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
               aria-label="Open menu"
-              style={{ width: '40px', height: '40px', alignItems: 'flex-end', justifyContent: 'center' }}
+              style={{ width: '44px', height: '44px' }}
             >
-              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
-              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
-              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--warm-white)', boxShadow: '0 1px 5px rgba(0, 0, 0, 0.55)' }}></span>
+              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--color-text)' }}></span>
+              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--color-text)' }}></span>
+              <span className="rounded-full h-[2px] w-[24px]" style={{ background: 'var(--color-text)' }}></span>
             </button>
           </div>
-        </div>
-          {/* Tablet Second Row (scrolled only) */}
-          <div 
-            className={cn(
-              "tablet-nav justify-center items-center pt-3 pb-1",
-              scrolled ? "scrolled" : ""
-            )}
-          >
-            <nav className="flex items-center gap-5 lg:gap-8">
-              <a href="/#expertise" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", activeSection === "expertise" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>How I help</a>
-              <a href="/#why-me" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", activeSection === "why-me" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Why me</a>
-              <a href="/#fit" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", activeSection === "fit" ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Best fit</a>
-              <Link to="/work" className={cn("text-[14px] lg:type-nav transition-colors whitespace-nowrap", isWorkPage ? "text-burgundy" : "text-warm-white/80 hover:text-warm-white")}>Past work</Link>
-            </nav>
           </div>
+        </div>
       </div>
 
       {/* Menu Overlay Scrim */}
       {isMobileMenuOpen && (
         <div 
-          className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm transition-opacity"
+          className="fixed inset-0 z-[60] bg-[var(--color-text)] opacity-20 transition-opacity"
           onClick={() => setIsMobileMenuOpen(false)}
           aria-hidden="true"
         />
@@ -222,65 +227,63 @@ export default function Header() {
       {isMobileMenuOpen && (
         <div 
           id="mobile-menu" 
-          className="fixed inset-y-0 right-0 z-[70] flex flex-col bg-ink border-l border-divider-dark w-full sm:w-[min(460px,100vw)] shadow-2xl overflow-y-auto"
+          className="fixed inset-y-0 right-0 z-[70] flex flex-col bg-[var(--color-page)] border-l border-[var(--color-rule)] w-full sm:w-[min(460px,100vw)] shadow-2xl overflow-y-auto"
           role="dialog"
           aria-modal="true"
         >
           {/* Menu Header */}
-          <div className="flex items-center justify-between px-[var(--page-gutter)] py-[20px] md:py-[24px] shrink-0">
+          <div className="flex items-center justify-between px-4 md:px-12 py-[20px] md:py-[24px] shrink-0">
             <Link 
               to="/" 
-              className="header-name text-warm-white transition-colors shrink-0"
+              className="type-wordmark font-['Cabin'] text-[var(--color-text)] transition-colors shrink-0"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Sampath Putrevu
             </Link>
             <button 
               onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-end shrink-0 transition-colors text-warm-white hover:text-warm-white focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink rounded-[4px]"
+              className="flex items-center font-['Cabin'] justify-end shrink-0 transition-colors text-[var(--color-text)] hover:text-[var(--color-accent)] focus:outline-none focus:ring-2 focus:ring-[var(--color-text)] focus:ring-offset-2 focus:ring-offset-[var(--color-page)] rounded-none"
               aria-label="Close menu"
-              style={{ width: '48px', height: '48px' }}
+              style={{ width: '44px', height: '44px' }}
             >
               <X className="w-8 h-8" strokeWidth={1.5} />
             </button>
           </div>
 
-          <div className="flex-1 px-[var(--page-gutter)] py-8 flex flex-col">
-            <div className="flex flex-col gap-6 sm:gap-8 type-section-heading-burgundy text-warm-white text-warm-white">
-              <a href="/#expertise" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-warm-white transition-colors">How I help</a>
-              <a href="/#why-me" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-warm-white transition-colors">Why me</a>
-              <a href="/#fit" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-warm-white transition-colors">Best fit</a>
+          <div className="flex-1 px-4 md:px-12 py-8 flex flex-col">
+            <div className="flex flex-col gap-6 sm:gap-8 type-wordmark font-['Cabin'] text-[var(--color-text)]">
+              <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[var(--color-accent)] transition-colors">About</Link>
+              <Link to="/how-i-help" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[var(--color-accent)] transition-colors">How I help</Link>
               <Link 
                 to="/work" 
-                onClick={() => setIsMobileMenuOpen(false)} 
+                onClick={() => setIsMobileMenuOpen(false)}
                 className={cn(
-                  "hover:text-warm-white transition-colors",
-                  isWorkPage ? "text-burgundy" : ""
+                  "hover:text-[var(--color-accent)] transition-colors",
+                  isWorkPage ? "text-[var(--color-accent)]" : ""
                 )}
               >
                 Past work
               </Link>
+              <Link to="/published" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[var(--color-accent)] transition-colors">Published</Link>
+              <Link to="/contact" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-[var(--color-accent)] transition-colors">Work with me &rarr;</Link>
             </div>
             
-            <div className="w-full h-px bg-white/10 my-8 sm:my-10"></div>
+            <div className="w-full h-px bg-[var(--color-rule)] my-8 sm:my-10"></div>
             
             <div className="flex flex-col gap-6 sm:gap-8">
-              <div className="flex items-center gap-4">
-                <a href="https://www.linkedin.com/in/sampathputrevu/" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-3 -m-3" aria-label="LinkedIn">
+              <div className="flex items-center gap-6">
+                <a href="https://www.linkedin.com/in/sampathputrevu/" target="_blank" rel="noopener noreferrer" className="text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-text)] focus:ring-offset-2 focus:ring-offset-[var(--color-page)] p-3 -m-3" aria-label="LinkedIn">
                   <div className="w-[28px] h-[28px] bg-current shrink-0" style={{ maskImage: `url(${linkedinIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${linkedinIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
                 </a>
-                <a href="mailto:sampathptrvu@gmail.com" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-3 -m-3" aria-label="Email">
+                <a href="mailto:sampathptrvu@gmail.com" className="text-[var(--color-text)] hover:text-[var(--color-accent)] transition-colors focus:outline-none focus:ring-2 focus:ring-[var(--color-text)] focus:ring-offset-2 focus:ring-offset-[var(--color-page)] p-3 -m-3" aria-label="Email">
                   <Mail className="w-[28px] h-[28px] shrink-0" />
-                </a>
-                <a href="https://wa.me/919989546250" target="_blank" rel="noopener noreferrer" className="text-white/90 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-ink p-3 -m-3" aria-label="WhatsApp">
-                  <div className="w-[28px] h-[28px] bg-current shrink-0" style={{ maskImage: `url(${whatsappIcon})`, maskSize: 'contain', maskRepeat: 'no-repeat', maskPosition: 'center', WebkitMaskImage: `url(${whatsappIcon})`, WebkitMaskSize: 'contain', WebkitMaskRepeat: 'no-repeat', WebkitMaskPosition: 'center' }} />
                 </a>
               </div>
               <a 
                 href="https://cal.com/sampath-putrevu-z6jq0i"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center px-6 py-4 rounded-[4px] type-button transition-all shadow-sm bg-burgundy text-warm-white hover:bg-burgundy-dark hover:-translate-y-[1px] focus:outline-none focus:ring-2 focus:ring-warm-white focus:ring-offset-2 focus:ring-offset-ink cursor-pointer mt-2 sm:mt-4 w-full"
+                className="inline-flex items-center justify-center px-6 py-4 rounded-none type-button font-['Cabin'] transition-all bg-[var(--color-text)] text-[var(--color-page)] hover:bg-[var(--color-accent)] hover:-translate-y-[1px] focus:outline-none focus:ring-2 focus:ring-[var(--color-text)] focus:ring-offset-2 focus:ring-offset-[var(--color-page)] cursor-pointer mt-2 sm:mt-4 w-full"
               >
                 Book a call
               </a>

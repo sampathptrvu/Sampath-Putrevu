@@ -1,14 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700;1,800&display=swap');
 @import "tailwindcss";
 
-html, body, button, input, textarea, select {
-  font-family: "Plus Jakarta Sans", sans-serif;
+@font-face {
+  font-family: 'Cabin';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/Cabin/Cabin-Variable.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Cabin';
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url('/fonts/Cabin/Cabin-Italic-Variable.ttf') format('truetype');
+}
 
-
-
-
+html, body, button, input, textarea, select {
+  font-family: var(--font-sans);
+}
 
 :root {
   --site-section-gap: 24px;
@@ -50,76 +60,67 @@ html, body, button, input, textarea, select {
 @plugin "@tailwindcss/typography";
 
 :root {
-  --page-max-width: 1280px;
-  --page-gutter: clamp(24px, 4vw, 64px);
-  --section-label-width: clamp(150px, 15vw, 190px);
-  --section-column-gap: clamp(28px, 4vw, 52px);
-  --section-block-gap: clamp(72px, 9vw, 120px);
-  --panel-padding: clamp(32px, 4vw, 52px);
-  --panel-radius: 24px;
+  --page-max-width: 1440px;
+  --page-gutter: 96px;
 
   /* Typography Tokens */
-  --type-display-font: "Plus Jakarta Sans", sans-serif;
-  --type-sans-font: "Plus Jakarta Sans", sans-serif;
-  
-  --type-hero-eyebrow-size: 23px;
-  --type-hero-h1-size: 34px;
-  --type-hero-desc-size: 17px;
-  
-  --type-section-label-size: 28px;
-  
-  /* Primary H3 like "One narrative. The full range." */
-  --type-h3-size-mobile: 24px;
-  --type-h3-size-desktop: 28px;
-  
-  /* H3 Burgandy like "Who should hire me?" */
-  --type-h3-alt-size-mobile: 24px;
-  --type-h3-alt-size-desktop: 30px;
-  
-  /* Card Heading like "Extract", "Frame" */
-  --type-card-h3-size: 20px;
-  
-  /* Card Subheading like "Brand and founder positioning" */
-  --type-card-h4-size-mobile: 18px;
-  --type-card-h4-size-desktop: 20px;
-  
-  /* Fit criteria heading */
-  --type-fit-h4-size-mobile: 20px;
-  --type-fit-h4-size-desktop: 22px;
-  
-  --type-body-size-mobile: 16px;
-  --type-body-size-desktop: 17px;
-  
-  /* CTA */
-  --type-cta-h2-size: 25px;
-  --type-cta-p-size: 24px;
-  --type-btn-size: 15px;
+  --font-sans: "Cabin", sans-serif;
+  --font-serif: "Cabin", sans-serif;
 
-  --font-display: "Plus Jakarta Sans", sans-serif;
-  --font-sans: "Plus Jakarta Sans", sans-serif;
+  /* Fable 5 Colors */
+  --color-page: #FBF9F4;
+  --color-text: #241F1A;
+  --color-text-secondary: #6E6255;
+  --color-accent: #8C3B2E;
+  --color-rule: #D9D2C1;
+  --color-white: #FFFFFF;
+  --color-selection: #EFE3D8;
 
-  --ink: #101410;
-  --deep-forest: #131b16;
-
-  --warm-white: #fffaf2;
-  --text-on-dark: rgba(255, 250, 242, 0.90);
-  --muted-on-dark: rgba(255, 250, 242, 0.72);
-
-  --parchment: #f7f1e7;
-  --panel-heading: #4f1719;
-  --panel-body: rgba(79, 23, 25, 0.80);
-  --panel-muted: rgba(79, 23, 25, 0.62);
-
-  --burgundy: #7a2428;
-  --burgundy-dark: #5c171b;
-
-  --divider-dark: rgba(255, 250, 242, 0.20);
-  --divider-light: rgba(79, 23, 25, 0.13);
+  /* Override old tokens for global application */
+  --ink: var(--color-text);
+  --navy: var(--color-text);
+  --cream: var(--color-page);
+  --gold: var(--color-accent);
+  --deep-forest: var(--color-text);
+  --warm-white: var(--color-page);
+  --text-on-dark: var(--color-page);
+  --muted-on-dark: var(--color-text-secondary);
+  --parchment: var(--color-page);
+  --panel-heading: var(--color-text);
+  --panel-body: var(--color-text);
+  --panel-muted: var(--color-text-secondary);
+  --burgundy: var(--color-accent);
+  --burgundy-dark: var(--color-accent);
+  --divider-dark: var(--color-rule);
+  --divider-light: var(--color-rule);
 }
 
+@media (max-width: 1280px) {
+  :root {
+    --page-gutter: 64px;
+  }
+}
+@media (max-width: 1024px) {
+  :root {
+    --page-gutter: 40px;
+  }
+}
+@media (max-width: 1023px) {
+  :root {
+    --page-gutter: 32px;
+  }
+}
+@media (max-width: 430px) {
+  :root {
+    --page-gutter: 20px;
+  }
+}
 
 @theme {
   --color-ink: var(--ink);
+  --color-navy: var(--navy);
+  --color-cream: var(--cream);
+  --color-gold: var(--gold);
   --color-deep-forest: var(--deep-forest);
   --color-warm-white: var(--warm-white);
   --color-text-on-dark: var(--text-on-dark);
@@ -133,25 +134,24 @@ html, body, button, input, textarea, select {
   --color-divider-dark: var(--divider-dark);
   --color-divider-light: var(--divider-light);
 
-  --font-sans: "Plus Jakarta Sans", sans-serif;
-  --font-display: "Plus Jakarta Sans", sans-serif;
-  --font-serif: "Plus Jakarta Sans", sans-serif;
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-sans);
+  --font-serif: var(--font-serif);
+}
+
+::selection {
+  background: var(--color-selection);
+  color: var(--color-text);
 }
 
 @layer utilities {
   .glass-panel {
     background: var(--color-surface-glass);
-    backdrop-filter: blur(16px) saturate(110%);
-    -webkit-backdrop-filter: blur(16px) saturate(110%);
     border: 1px solid var(--color-surface-border);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.06);
     transition: background-color 0.3s ease, border-color 0.3s ease;
   }
-  @supports not (backdrop-filter: blur(16px)) {
-    .glass-panel {
-      background: rgba(12, 17, 15, 0.94);
-    }
-  }
+
 
   /* Don't hover if not wanted everywhere, but we can have an interactive class */
   .glass-panel-interactive:hover {
@@ -161,28 +161,16 @@ html, body, button, input, textarea, select {
 
   .glass-panel-strong {
     background: var(--color-surface-glass-strong);
-    backdrop-filter: blur(16px) saturate(110%);
-    -webkit-backdrop-filter: blur(16px) saturate(110%);
     border: 1px solid var(--color-surface-border);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.06);
   }
-  @supports not (backdrop-filter: blur(16px)) {
-    .glass-panel-strong {
-      background: rgba(12, 17, 15, 0.94);
-    }
-  }
+
 
   .glass-nav-scrolled {
     background: rgba(8, 13, 12, 0.78);
-    backdrop-filter: blur(18px) saturate(115%);
-    -webkit-backdrop-filter: blur(18px) saturate(115%);
     border-bottom: 1px solid var(--color-surface-border);
   }
-  @supports not (backdrop-filter: blur(18px)) {
-    .glass-nav-scrolled {
-      background: rgba(12, 17, 15, 0.94);
-    }
-  }
+
 }
 
 html {
@@ -191,18 +179,18 @@ html {
 
 
 body {
-  background-color: #101410;
+  background-color: var(--cream);
   
   
 
-  color: var(--text-on-dark);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--navy);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   }
 
 .font-serif {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-serif);
 }
 
 
@@ -260,7 +248,9 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
 .section-card {
   box-sizing: border-box;
-  background: #f1ede3;
+  background: #FFFFFF;
+  border: 1px solid rgba(13, 27, 46, 0.1);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
   border-radius: 24px;
   width: 100%;
   margin: 0;
@@ -300,8 +290,6 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 .glass-surface {
   background: rgba(20, 28, 27, 0.65);
   border: 1px solid rgba(255, 255, 255, 0.18);
-  backdrop-filter: blur(10px) saturate(102%);
-  -webkit-backdrop-filter: blur(10px) saturate(102%);
   box-shadow:
     0 20px 54px rgba(4, 9, 9, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.12);
@@ -329,10 +317,9 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   overflow: hidden;
 }
 .footer-cta-inner {
+  color: var(--cream);
   text-align: center;
-  -webkit-backdrop-filter: blur(14px) saturate(92%);
-  backdrop-filter: blur(14px) saturate(92%);
-  background: rgba(28, 38, 37, 0.72);
+  background: var(--navy);
   border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 24px;
   flex-direction: column;
@@ -349,7 +336,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   margin: 0 0 16px;
   font-size: 25px;
   line-height: 1.04;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-sans);
   font-weight: bold;
 }
 
@@ -364,10 +351,217 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
 @layer components {
 
-  /* Site-wide Typography Classes from HomePage Source of Truth */
+  /* FABLE PASS 1 TYPOGRAPHY */
+
+  .type-wordmark {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    font-size: 18px;
+    color: var(--color-text);
+  }
+  @media (min-width: 1024px) {
+    .type-wordmark {
+      font-size: 20px;
+    }
+  }
+
+  .type-hero-eyebrow {
+    font-family: var(--font-sans) !important;
+    font-weight: 500 !important;
+    font-size: 12px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    line-height: 1.4 !important;
+    color: var(--color-text-secondary) !important;
+  }
+  @media (min-width: 1024px) {
+    .type-hero-eyebrow {
+      font-size: 13px !important;
+    }
+  }
+
+  .type-proof-heading {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.12;
+    letter-spacing: -0.005em;
+    color: var(--color-text);
+  }
+  @media (min-width: 768px) {
+    .type-proof-heading {
+      font-size: 34px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .type-proof-heading {
+      font-size: 42px;
+    }
+  }
+
+  .type-h1 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 1.12;
+    letter-spacing: -0.005em;
+    color: var(--color-text);
+  }
+  @media (min-width: 1024px) {
+    .type-h1 {
+      font-size: 44px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .type-h1 {
+      font-size: 56px;
+    }
+  }
+
+  .type-body {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--color-text);
+  }
+  @media (min-width: 768px) {
+    .type-body {
+      font-size: 17px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .type-body {
+      font-size: 18px;
+    }
+  }
+
+  .type-body-secondary {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+  }
+  @media (min-width: 1024px) {
+    .type-body-secondary {
+      font-size: 16px;
+    }
+  }
+
+  .type-margin-note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-accent);
+  }
+  @media (min-width: 1024px) {
+    .type-margin-note {
+      font-size: 14px;
+    }
+  }
+
+  .type-nav-link {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--color-text-secondary);
+  }
+  .type-nav-link:hover {
+    color: var(--color-text);
+  }
+
+  .type-button {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 13px;
+  }
+  @media (min-width: 1024px) {
+    .type-button {
+      font-size: 14px;
+    }
+  }
+
+  /* FABLE PASS 1 PRIMITIVES */
+
+  .site-container {
+    max-width: var(--page-max-width);
+    margin: 0 auto;
+    padding: 0 var(--page-gutter);
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .rule-major {
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-rule);
+  }
+
+  .rule-internal {
+    height: 1px;
+    background-color: var(--color-rule);
+  }
+
+  /* Desktop editorial grid >=1280: reading 680, gap 40, margin 320 */
+  /* At 1024: reading 620, gap 32, margin 260 */
+  /* <=1023: single column */
+  .editorial-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  @media (min-width: 1024px) {
+    .editorial-grid {
+      grid-template-columns: 620px 32px 260px;
+    }
+    .rule-internal {
+      width: 620px;
+    }
+  }
+  @media (min-width: 1280px) {
+    .editorial-grid {
+      grid-template-columns: 680px 40px 320px;
+    }
+    .rule-internal {
+      width: 680px;
+    }
+  }
+
+  .editorial-reading {
+    grid-column: 1;
+  }
+
+  .editorial-margin {
+    grid-column: 1;
+    margin-left: 16px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .editorial-margin-tick {
+    width: 12px;
+    height: 1px;
+    background-color: var(--color-accent);
+  }
+  
+  @media (min-width: 1024px) {
+    .editorial-margin {
+      grid-column: 3;
+      margin: 0; /* Vertically aligns to source */
+      gap: 0;
+    }
+    .editorial-margin-tick {
+      display: none;
+    }
+  }
   
   .type-hero-eyebrow {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-hero-eyebrow-size);
     font-weight: bold;
     line-height: 1.3;
@@ -376,7 +570,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-hero-headline {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-hero-h1-size);
     font-weight: normal;
     line-height: 1.08;
@@ -385,7 +579,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-hero-description {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-hero-desc-size);
     font-weight: normal;
     line-height: 1.5;
@@ -394,7 +588,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-section-label {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-section-label-size);
     font-weight: 400;
     line-height: 1.05;
@@ -402,7 +596,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-section-heading {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-h3-size-mobile);
     font-weight: 400;
     line-height: 1.1;
@@ -416,7 +610,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-section-heading-burgundy {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-h3-alt-size-mobile);
     font-weight: 400;
     line-height: 1.05;
@@ -430,7 +624,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-card-heading-1 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-card-h3-size);
     font-weight: bold;
     line-height: 1.2;
@@ -438,7 +632,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-card-heading-2 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-card-h4-size-mobile);
     font-weight: bold;
     line-height: 1.375; /* leading-snug */
@@ -451,7 +645,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
   
   .type-card-heading-3 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-fit-h4-size-mobile);
     font-weight: bold;
     line-height: 1.375;
@@ -465,7 +659,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
   .type-body {
 
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-body-size-mobile);
     font-weight: 500;
     line-height: 1.625;
@@ -479,7 +673,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-body-muted {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-body-size-mobile);
     font-weight: 400;
     line-height: 1.625;
@@ -492,7 +686,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
   
   .type-body-bold {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-body-size-mobile);
     font-weight: bold;
     line-height: 1.625;
@@ -505,7 +699,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-cta-heading {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-cta-h2-size);
     font-weight: bold;
     line-height: 1.04;
@@ -514,7 +708,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
   .type-cta-body {
 
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-cta-p-size);
     font-weight: 500;
     line-height: 1.5;
@@ -523,7 +717,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
 
   .type-nav {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: 15px;
     font-weight: bold;
   }
@@ -539,13 +733,13 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-button {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-btn-size);
     font-weight: bold;
   }
   
   .type-label-small {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: 14px;
     font-weight: bold;
     color: var(--color-panel-muted);
@@ -555,7 +749,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   /* Site-wide Typography Classes from HomePage Source of Truth */
   
   .type-hero-eyebrow {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-hero-eyebrow-size);
     font-weight: bold;
     line-height: 1.3;
@@ -564,7 +758,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-hero-headline {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-hero-h1-size);
     font-weight: normal;
     line-height: 1.08;
@@ -573,7 +767,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-hero-description {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-hero-desc-size);
     font-weight: normal;
     line-height: 1.5;
@@ -582,7 +776,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-section-label {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-section-label-size);
     font-weight: 400;
     line-height: 1.05;
@@ -590,7 +784,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-section-heading {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-h3-size-mobile);
     font-weight: 400;
     line-height: 1.1;
@@ -604,7 +798,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-section-heading-burgundy {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-h3-alt-size-mobile);
     font-weight: 400;
     line-height: 1.05;
@@ -618,7 +812,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-card-heading-1 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-card-h3-size);
     font-weight: bold;
     line-height: 1.2;
@@ -626,7 +820,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-card-heading-2 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-card-h4-size-mobile);
     font-weight: bold;
     line-height: 1.375; /* leading-snug */
@@ -639,7 +833,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
   
   .type-card-heading-3 {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-fit-h4-size-mobile);
     font-weight: bold;
     line-height: 1.375;
@@ -653,7 +847,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
   .type-body {
 
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-body-size-mobile);
     font-weight: 500;
     line-height: 1.625;
@@ -667,7 +861,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-body-muted {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-body-size-mobile);
     font-weight: 400;
     line-height: 1.625;
@@ -680,7 +874,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
   
   .type-body-bold {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-body-size-mobile);
     font-weight: bold;
     line-height: 1.625;
@@ -693,7 +887,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-cta-heading {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-cta-h2-size);
     font-weight: bold;
     line-height: 1.04;
@@ -702,7 +896,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
   .type-cta-body {
 
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-cta-p-size);
     font-weight: 500;
     line-height: 1.5;
@@ -711,7 +905,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
 
   .type-nav {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: 15px;
     font-weight: bold;
   }
@@ -727,13 +921,13 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   }
 
   .type-button {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: var(--type-btn-size);
     font-weight: bold;
   }
   
   .type-label-small {
-    font-family: "Plus Jakarta Sans", sans-serif;
+    font-family: var(--font-sans);
     font-size: 14px;
     font-weight: bold;
     color: var(--color-panel-muted);
@@ -866,8 +1060,6 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   transition: all .5s cubic-bezier(.16, 1, .3, 1);
   position: relative;
   overflow: visible;
-  backdrop-filter: blur(10px) saturate(102%);
-  -webkit-backdrop-filter: blur(10px) saturate(102%);
   box-shadow: 0 20px 54px rgba(4, 9, 9, 0.14), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
@@ -933,11 +1125,11 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   color: #ffffff;
   font-weight: bold;
   font-style: normal;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-sans);
 }
 
 .hero-copy-panel h1 {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-sans);
   font-size: 34px;
   line-height: 1.08;
   font-weight: normal;
@@ -1014,15 +1206,16 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   width: fit-content;
   min-width: 180px;
   padding: 24px 28px;
-  background: var(--parchment);
-  color: var(--panel-heading);
+  background: var(--navy);
+  color: var(--cream);
+  box-shadow: 0 4px 15px rgba(13, 27, 46, 0.15);
   border: 1px solid var(--divider-light);
   border-radius: 20px;
   box-shadow: 0 12px 36px rgba(4, 9, 9, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .section-label {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-sans);
   font-weight: 400;
   color: var(--panel-heading);
   line-height: 1.05;
@@ -1075,7 +1268,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 }
 
 .work-intro-panel .eyebrow {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-sans);
   color: var(--warm-white);
   font-size: 17px;
   font-weight: 600;
@@ -1085,7 +1278,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 }
 
 .work-intro-panel .main-headline {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-sans);
   color: var(--warm-white);
   font-weight: 400;
   font-size: 28px;
@@ -1097,7 +1290,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 }
 
 .work-intro-panel .intro-paragraph {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-sans);
   color: rgba(255, 250, 242, 0.90);
   font-size: 19px;
   line-height: 1.65;
@@ -1136,7 +1329,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 }
 
 .work-list-heading {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-sans);
   font-weight: 400;
   color: var(--panel-heading);
   font-size: 32px;
@@ -1162,7 +1355,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 }
 
 .work-entry .company-name {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-sans);
   color: var(--panel-heading);
   font-size: 25px;
   font-weight: 700;
@@ -1178,8 +1371,8 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 }
 
 .work-entry .descriptor {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  color: rgba(79, 23, 25, 0.92);
+  font-family: var(--font-sans);
+  color: var(--navy);
   font-size: 18px;
   font-weight: 600;
   line-height: 1.5;
@@ -1188,8 +1381,8 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 }
 
 .work-entry .explanation {
-  font-family: "Plus Jakarta Sans", sans-serif;
-  color: rgba(79, 23, 25, 0.78);
+  font-family: var(--font-sans);
+  color: rgba(13, 27, 46, 0.78);
   font-size: 17px;
   font-weight: 400;
   line-height: 1.7;
@@ -1332,7 +1525,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 
 /* Work Entries Updated */
 .work-entry .work-outcome {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-sans);
   color: var(--panel-heading);
   font-size: 28px;
   font-weight: 400;
@@ -1340,7 +1533,7 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
   margin-bottom: 12px;
 }
 .work-entry .work-kicker {
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: var(--font-sans);
   color: var(--burgundy);
   font-size: 16px;
   font-weight: 600;
@@ -1349,8 +1542,8 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 }
 .work-entry .work-body {
 
-  font-family: "Plus Jakarta Sans", sans-serif;
-  color: rgba(22, 28, 25, 0.82);
+  font-family: var(--font-sans);
+  color: rgba(13, 27, 46, 0.82);
   font-size: 17px;
   font-weight: 400;
   line-height: 1.7;
@@ -1379,32 +1572,154 @@ nav, button, a.bg-deep-forest, .bg-deep-forest {
 }
 
 /* Shared Site Background */
-.site-background-image {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100dvh;
-  
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: brightness(1.12) contrast(1.03) saturate(0.96) hue-rotate(3deg);
-  z-index: -2;
-  pointer-events: none;
-}
+
 
 @media (min-width: 1100px) {
-  .site-background-image {
-    background-position: center center;
-  }
+  
 }
 @media (min-width: 768px) and (max-width: 1099px) {
-  .site-background-image {
-    background-position: 50% center;
-  }
+  
 }
 @media (max-width: 767px) {
-  .site-background-image {
-    background-position: 46% center;
+  
+}
+
+
+/* PASS 2 TYPOGRAPHY */
+.type-h2-statement {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.12;
+  letter-spacing: -0.005em;
+  color: var(--color-text);
+}
+@media (min-width: 768px) { .type-h2-statement { font-size: 34px; } }
+@media (min-width: 1024px) { .type-h2-statement { font-size: 42px; } }
+
+.type-step-numeral {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 28px;
+  color: var(--color-accent);
+}
+
+.type-step-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+
+.type-step-body {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.type-capability-heading {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.005em;
+  color: var(--color-text);
+}
+@media (min-width: 768px) { .type-capability-heading { font-size: 30px; } }
+@media (min-width: 1024px) { .type-capability-heading { font-size: 36px; } }
+
+.type-capability-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--color-accent);
+}
+@media (min-width: 1024px) { .type-capability-title { font-size: 17px; } }
+
+.type-capability-body {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+@media (min-width: 1024px) { .type-capability-body { font-size: 17px; } }
+
+.type-fit-column-heading {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+.type-fit-row-headline {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-text);
+}
+
+.type-fit-row-body {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+}
+
+.type-cta-statement {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 22px;
+  line-height: 1.3;
+  color: var(--color-text);
+}
+@media (min-width: 768px) { .type-cta-statement { font-size: 24px; } }
+@media (min-width: 1024px) { .type-cta-statement { font-size: 28px; } }
+
+.type-cta-button {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* PASS 5 MOTION - PROGRESSIVE ENHANCEMENT */
+@keyframes balancedReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+.reveal-animate {
+  animation: balancedReveal 400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.reveal-animate.reveal-annotation {
+  animation-delay: 150ms;
+}
+
+/* Pending reveal state added by JS for elements below the fold */
+.reveal-pending {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-animate {
+    animation: none !important;
+  }
+  .reveal-pending {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}

@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import { journalismStories } from './src/data/journalismData';
 
 function escapeHtml(unsafe: string) {
   return unsafe
@@ -29,25 +28,8 @@ export function prerenderPlugin() {
           description: 'Selected work across Champ AI, Zenskar, Web3Auth, Accel, Masai School, and YourStory. Narrative, brand, PR, and inbound for AI-native and technical companies.',
           canonical: 'https://sampathputrevu.com/work',
           ogType: 'website',
-        },
-        {
-          path: '/journalism',
-          title: 'Selected Journalism | Sampath Putrevu',
-          description: 'Five selected YourStory pieces from Sampath Putrevu’s reporting on technical founders, products and consequential technology companies.',
-          canonical: 'https://sampathputrevu.com/journalism',
-          ogType: 'website',
         }
       ];
-
-      for (const story of journalismStories) {
-        routes.push({
-          path: `/journalism/${story.slug}`,
-          title: `${story.label} — Selected Journalism | Sampath Putrevu`,
-          description: story.description,
-          canonical: `https://sampathputrevu.com/journalism/${story.slug}`,
-          ogType: 'article',
-        });
-      }
 
       for (const route of routes) {
         let html = template;
